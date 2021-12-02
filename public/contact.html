@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DevelopND | Contact Us</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta name="description"
+        content="DevelopND is a web app where you can track all project relating to your community.">
+    <link rel="icon" href="images/developnd-logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/contact.css">
+    <script src="../js/general/routes.js"></script>
+    <script src="../js/general/onSession.js"></script>
+</head>
+
+<body class="nunito scroller">
+    <div id="containerDOM" class="container-fluid">
+        <script src="js/general/larger-screen-resize.js"></script>
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-dark our-nav col-12">
+                <a class="navbar-brand" href="index.html">
+                    <div class="logo-replace">
+                        <img src="images/developnd-logo.png" alt="logo">
+                    </div>
+                    <span class="ml-2 mt-1 bold">DevelopND</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto nav-utilities">
+                        <li class="nav-item mt-2">
+                            <a class="nav-link custom-nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item mt-2">
+                            <a class="nav-link custom-nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item mt-2">
+                            <a class="nav-link custom-nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item mt-2">
+                            <a class="nav-link custom-nav-link" href="project/search-results.html">Search</a>
+                        </li>
+                        <li class="nav-item mt-2 auth-control">
+                            <a class="nav-link custom-nav-link" href="login.html">Sign In</a>
+                        </li>
+                        <li class="nav-item mt-2 auth-control">
+                            <a class="nav-link custom-nav-link" href="signup.html">Register</a>
+                        </li>
+                        <li class="nav-item dropdown track-login-user" data-user-drop-box>
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <div class="nav-user row mx-0">
+                                    <div class="col-10 col-md-8 px-0 mt-2 text-right data-user-name">
+                                        <span class="" id="nav-name" data-user-name>...</span>
+                                    </div>
+                                    <div class="col-2 col-md-4 px-0">
+                                        <div class="nav-image mr-auto mx-3 border">
+                                            <img class="" id="nav-user-image" data-user-image src="../../images/noimage.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- dashboard.html -->
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a id="user-or-reviewer" class="dropdown-item" href="#">Dashboard</a>                                
+                                <a class="dropdown-item" href="../account/user/profile-settings.html">Settings</a>
+                                <a class="dropdown-item" href="#">Help</a>
+                                <a class="dropdown-item" style="cursor:pointer;" data-logout>Log Out</a>
+                            </div>
+                        </li>
+                        <script>
+                            let currentUser = JSON.parse(localStorage.getItem('DevelopND-user')) || false;
+                            console.log(currentUser);
+                               if (currentUser) {
+                                   let {
+                                       user,
+                                       image_link
+                                   } = currentUser;
+                                   const authNav = document.querySelector('[data-user-drop-box]');
+                                   const authImage = document.querySelector('[data-user-image]');
+                                   const authName = document.querySelector('[data-user-name]');
+                                   const authControl = Array.from(document.querySelectorAll('.auth-control'));
+
+                                   if(user.image_type == 'DevelopND') {
+                                        authImage.src = `${image_link}${user.image}`;
+                                   }else {
+                                        authImage.src = `${user.image}`;
+                                    }
+                                    if(user.name){
+                                        nameSplit = user.name.split('');
+                                        if(nameSplit[1]){
+                                            nameSplit = `${nameSplit[0].charAt(0).toUpperCase()} ${nameSplit[1].charAt(0).toUpperCase()}`;
+                                        }else {
+                                            nameSplit = `${nameSplit[0].charAt(0).toUpperCase()}`;
+                                        }
+                                    }
+                                    
+                                        if(user.user_type == 'admin'){
+                                        user.name != null ? authName.textContent = nameSplit : authName.textContent = `Hello Admin`;
+                                        }else {
+                                        user.name != null ? authName.textContent = nameSplit : authName.textContent = `Hello Member`;
+                                        }
+                                   authControl.map(x => {
+                                       x.style.display = 'none';
+                                   });
+                                   authNav.style.display = 'block';
+
+                               }
+                       </script>
+                    </ul>
+                </div>
+            </nav>
+            <div class="contact-full col-12 px-0 pb-3 row mx-0">
+                <div class="col-12 col-md-6 order-2 order-md-1">
+                    <div class="col-12 col-md-8 mx-auto pb-3 contact-us-con mt-5">
+                        <div class="col-11 px-0 mx-auto pt-5">
+                            <p>
+                                <span>+234 (0) 703 1593 783</span>
+                            </p>
+                            <p>
+                                <span>info@stakeholderdemocracy.org</span>
+                            </p>
+                            <p>
+                                <a style="background: none; padding:0;" href="https://stakeholderdemocracy.org" target="blank"><span>stakeholderdemocracy.org</span></a>
+                            </p>
+                            <p>
+                                <span class="">SDN Nigeria Secretariat, 13 Location Road,
+                                    off Tombia Extension, Oroazi, G.R.A. Phase 3, Port Harcourt</span>
+                            </p>
+                        </div>
+                        <div class="col-11 px-0 mx-auto mt-5 pt-5">
+                            <p>
+                                <span>Connect</span>
+                            </p>
+                            <a href="https://twitter.com/SDNNigerDelta"><img src="images/twitter-white.svg" alt=""></a>
+                            <a href="https://facebook.com/SDNNigerDelta/"><img src="images/facebook-white.svg" alt=""></a>
+                            <a class="sdn-link" href="https://www.stakeholderdemocracy.org/"><img src="images/sdn-logo.jfif" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 order-1 order-md-2">
+                    <div class="col-12 col-md-9 mx-auto contact-form-con mt-5 pt-3">
+                        <p class="text-center">
+                            <span>Contact Us</span>
+                        </p>
+                        <form id="contactForm" action="/contact" method="POST">
+                            <div class="form-group mb-1">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            <div class="form-group mb-1">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="form-group mb-1">
+                                <label for="phone">Phone</label>
+                                <input type="phone" id="phone" name="phone" class="form-control">
+                            </div>
+                            <div class="form-group mb-1">
+                                <label for="state">State</label>
+                                <select id="state" name="location" class="custom-select" required>
+                                    <option selected>Select your state</option>
+                                    <option value="Abia">Abia</option>
+                                    <option value="Akwa Ibom">Akwa Ibom</option>
+                                    <option value="Bayelsa">Bayelsa</option>
+                                    <option value="Cross-river">Cross River</option>
+                                    <option value="Delta">Delta</option>
+                                    <option value="Edo">Edo</option>
+                                    <option value="Imo">Imo</option>
+                                    <option value="Ondo">Ondo</option>
+                                    <option value="Rivers">Rivers</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-1">
+                                <label for="message">Message</label>
+                                <textarea type="phone" id="message" name="message" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" id="contact-btn" class="btn col-4 col-md-6 col-lg-3 btn-brand my-3">Submit
+                                <!-- <div class="spinner-border spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div> -->
+                            </button>
+                            <span id="successAlert" style="color: green; border: none; text-transform: none; font-size: 12px;" class="d-none">Message submited successfully!</span> 
+                            <span id="failureAlert" style="color: red; border: none; text-transform: none; font-size: 12px;" class="d-none">Message not submitted, this might be a network issue!</span>                           
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <footer class="col-12">
+                <div class="col-12 mx-auto footer-con px-0 row mx-0">
+                    <div class="col-12 col-md px-0 links-contact row mx-0">
+                        <div class="col-12 col-md-4 mt-5 tracker-copyright text-center">
+                            <span style="cursor: pointer;" class="mt-2 bold" onclick="location.href=window.origin">DevelopND</span>
+                            <p>&copy;DevelopND 2020</p>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 site-links px-0">
+                            <ul class="list-group" >
+                                <!-- onclick="location.href='about.html'" -->
+                                <li class="list-group-item py-1 px-1" >
+                                    <a  href="./about.html">About Us</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="./project/search-results.html">Projects</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="./contact.html">Contact</a>
+                                </li>
+                                <!-- <li class="list-group-item py-1 px-1">
+                                    <a href="./testimonial.html">Testimonial</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="./terms-condition.html">Terms and Conditions</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 contact-details px-0">
+                            <ul class="list-group">
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="https://www.stakeholderdemocracy.org/">
+                                        SDN Nigeria Secretariat,
+                                        13 Location Road, Off Tombia Extension,
+                                        Oroazi, G.R.A. Phase 3,
+                                        Port Harcourt
+                                    </a>
+                                    </li>
+                                <li class="list-group-item py-1 px-1">+234 (0) 703 1593 783</li>
+                                <li class="list-group-item py-1 px-1">info@stakeholderdemocracy.org</li>
+                                <li class="list-group-item py-1 px-1">info@developnd.ng</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md px-0 subscribe-social row mx-0">
+                        <div class="col-12 col-md-6 footer-subscribe mt-5">
+                            <span class="">Subscribe to our newsletter</span>
+                           <div class="special-input px-1 col-12 col-md-12 mx-auto row mx-0" style="border-radius: 2px;">
+                                <input id="email-sub-2" type="email" class="form-control col-12 col-md-9 my-1"
+                                    placeholder="Enter Email" required>
+                                <button id="subscribe-btn-2" class="btn btn-brand col-12 col-md-3 my-1 px-0"
+                                    style="border-radius: 2px;">Subscribe</button>
+                            </div>
+                        </div>
+                        <div class="footer-social col-12 col-md-6 mt-5 mb-3 row mx-0">
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="link-con mx-auto">
+                                    <a href="https://twitter.com/SDNNigerDelta">
+                                        <img class="mt-1" src="images/twitter-brand.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="link-con mx-auto">
+                                    <a href="https://facebook.com/SDNNigerDelta/">
+                                        <img class="mt-1" src="images/facebook-brand.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="sdn-link-con mx-auto">
+                                    <a href="https://www.stakeholderdemocracy.org/">
+                                        <img class="" src="images/sdn-logo.jfif" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border:0px; padding: 0rem 1rem;">
+                    <button type="button" data-close class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="response">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/general/third_party_cdn.js"></script>
+    <script src="js/general/placeholder.js"></script>
+    <script src="js/apis/contactForm.js"></script>
+    <script src="js/apis/newsletter.js"></script>
+    <script src="js/general/global.js"></script>
+    <script>
+        (() => {
+            let validUser = JSON.parse(localStorage.getItem('DevelopND-user')) || false;
+            if (validUser) {
+                let {
+                    user
+                } = validUser;
+                let myHref = document.querySelector('#user-or-reviewer');
+    
+                if (user.user_type === 'reviewer') {
+                    myHref.setAttribute('href', '../account/reviewer/reviewer.html');
+                } else if (user.user_type === 'admin') {
+                    myHref.setAttribute('href', '../account/admin/dashboard-home.html');
+                } else {
+                    myHref.setAttribute('href', '../account/user/dashboard.html');
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>

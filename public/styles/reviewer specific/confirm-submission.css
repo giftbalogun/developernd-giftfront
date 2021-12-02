@@ -1,0 +1,6 @@
+.re-edit, .re-confirm {
+    width: 100px;
+}
+.re-confirm {
+    background: #0B273D !important;
+}

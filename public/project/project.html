@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:url" content="https://hackanthon-258716.firebaseapp.com/project/project.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevelopND | Project" />
+    <meta property="og:description"
+        content="DevelopND is a web app where you can track all project relating to your community." />
+    <meta property="og:image" content="https://res.cloudinary.com/getfiledata/image/upload/v1581112174/DevelopND.png" />
+    <meta property="fb:app_id" content="484281775613285" />
+    <title>DevelopND | Project</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta name="description"
+        content="DevelopND is a web app where you can track all project relating to your community, click to view.">
+    <link rel="icon" href="../images/developnd-logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/projects.css">
+    <script src="../js/general/routes.js"></script>
+    <script src="../js/general/onSession.js"></script>
+</head>
+
+<body class="nunito scroller">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 loading-overlay" style="position: fixed; z-index: 999999;" data-loader>
+                <div class="col-12 spinner-con text-center">
+                    <div style="height: 50px; width: 50px; color: azure;" class="spinner-border mt-3" role="status">
+                        <span class="sr-only" style="color: azure;">Loading...</span>
+                    </div>
+                    <div style="text-align: center; color: azure;">
+                        <p>Loading...</p>
+                    </div>
+
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-dark our-nav col-12">
+                <a class="navbar-brand" href="../index.html">
+                    <div class="logo-replace">
+                        <img src="../images/developnd-logo.png" alt="logo">
+                    </div>
+                    <span class="ml-2 mt-1 bold">DevelopND</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto nav-utilities">
+                        <li class="nav-item mt-2 custom-nav-li">
+                            <a class="nav-link custom-nav-link" href="../index.html">Home</a>
+                        </li>
+                        <li class="nav-item mt-2 custom-nav-li" id="nav-sign-in">
+                            <a class="nav-link custom-nav-link" href="../login.html">Sign In</a>
+                        </li>
+                        <script>
+                            if (localStorage.getItem('token')) {
+                                document.querySelector('#nav-sign-in').style.display = 'none';
+                            }
+                        </script>
+                        <li class="nav-item ml-auto mt-2 px-2 custom-nav-li">
+                            <a class="nav-link" style="cursor: pointer; margin: 0;"
+                                onclick="location.href=`${window.location.origin}/project/search-results.html`">Search</a>
+                        </li>
+                        <div class="dropdown mt-2 mx-1 track-login-user" id="notification-tab">
+                            <i class="fa fas fa-bell mr-3 mt-2 dropdown-icon" id="notificationsDropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                            <span class="badge" data-toggle="dropdown" data-real-time-count></span>
+                            <div class="dropdown-menu action-dropdown border" aria-labelledby="dropdownMenuButton">
+                                <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                    <span class="col-6" data-notification-unread-count>3 unread notifications</span>
+                                    <span class="col-6 text-right mark-as-read" data-mark-as-read>Mark all as
+                                        read</span>
+                                </div>
+                                <div class="col-12 px-0 dropdown-body scroller" data-notification-DOM>
+                                    <span class="spinner-border spinner-border-sm mx-0" style=" float: center;"
+                                        role="status">
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="dropdown mt-2 mx-1 track-login-user" id="adminNotify">
+                            <i class="fa fas fa-envelope mr-3 mt-2 dropdown-icon" id="messagesDropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                            <span class="badge">1</span>
+                            <div class="dropdown-menu action-dropdown border" aria-labelledby="dropdownMenuButton">
+                                <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                    <span class="col-6">3 messages</span>
+                                    <span class="col-6 text-right mark-as-read">Mark all as read</span>
+                                </div>
+                                <div class="col-12 px-0 dropdown-body scroller">
+                                    <div class="col-12 indiv-info row mx-0">
+                                        <div class="info-actual-con col-12" data-toggle="modal" data-target="#viewMessageModal">
+                                            <p class="info-words mb-0 mt-2">New broadcast message</p>
+                                            <span class="info-time">12 min ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <li class="nav-item dropdown track-login-user" data-user-drop-box>
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <div class="nav-user row mx-0">
+                                    <div class="col-10 col-md-8 px-0 mt-2 text-right data-user-name">
+                                        <span class="" id="nav-name" data-user-name>...</span>
+                                    </div>
+                                    <div class="col-2 col-md-4 px-0">
+                                        <div class="nav-image mr-auto mx-3 border">
+                                            <img class="" id="nav-user-image" data-user-image
+                                                src="../../images/noimage.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- dashboard.html -->
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a id="user-or-reviewer" class="dropdown-item" href="#">Dashboard</a>
+                                <a class="dropdown-item" href="../account/user/profile-settings.html">Settings</a>
+                                <a class="dropdown-item" href="#">Help</a>
+                                <a class="dropdown-item" style="cursor:pointer;" data-logout>Log Out</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <script>
+                        let currentUser = JSON.parse(localStorage.getItem('DevelopND-user')) || false;
+                        console.log(currentUser);
+                        if (currentUser) {
+                            let {
+                                user,
+                                image_link
+                            } = currentUser;
+                            const authNav = document.querySelector('[data-user-drop-box]');
+                            const authImage = document.querySelector('[data-user-image]');
+                            const authName = document.querySelector('[data-user-name]');
+                            const authControl = Array.from(document.querySelectorAll('.auth-control'));
+
+                            if (user.image_type == 'DevelopND') {
+                                authImage.src = `${image_link}${user.image}`;
+                            } else {
+                                authImage.src = `${user.image}`;
+                            }
+                            if (user.name) {
+                                nameSplit = user.name.split('');
+                                if (nameSplit[1]) {
+                                    nameSplit = `${nameSplit[0].charAt(0).toUpperCase()} ${nameSplit[1].charAt(0).toUpperCase()}`;
+                                } else {
+                                    nameSplit = `${nameSplit[0].charAt(0).toUpperCase()}`;
+                                }
+                            }
+
+                            if (user.user_type == 'admin') {
+                                user.name != null ? authName.textContent = nameSplit : authName.textContent = `Hello Admin`;
+                            } else {
+                                user.name != null ? authName.textContent = nameSplit : authName.textContent = `Hello Member`;
+                            }
+                            authControl.map(x => {
+                                x.style.display = 'none';
+                            });
+                            authNav.style.display = 'block';
+
+                        }
+                    </script>
+                </div>
+            </nav>
+            <div class="col-12 project-header row mx-0 px-0">
+                <div class="col-12 col-md-6">
+                    <p class="project-title mt-3 mb-0" data-project-topic>Project Name</p>
+                    <span class="font-12px" data-project-contractor>Contractor:</span>
+                </div>
+                <div class="col-12 col-md-6 text-right">
+                    <p class="project-title mt-4">Project Type: <span data-project-type></span></p>
+                </div>
+            </div>
+            <div class="col-12 project-full px-0">
+                <ul class="nav nav-pills col-11 mx-auto mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="summary-tab" data-toggle="pill" href="#summary" role="tab"
+                            aria-controls="summary" aria-selected="true">Summary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="documents-tab" data-toggle="pill" href="#documents" role="tab"
+                            aria-controls="documents" aria-selected="false">Documents</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active summary-section" id="summary" role="tabpanel"
+                        aria-labelledby="summary-tab">
+                        <div class="col-12 col-md-11 mx-auto row mx-0 project-detailed">
+                            <div class="col-12 col-md-7 project-data mt-2 px-0">
+                                <p class="total-budget grey bold mb-2 mt-2 px-0">
+                                    <span class="last-updated bold grey text-align: left;">
+                                        <span data-project-views style="color: #0b273d;">...</span></span>
+                                </p>
+                                <p class="total-budget grey bold mb-2 mt-2">
+                                    <span class="last-updated bold grey">Project last updated: <span
+                                            data-project-last-update style="color: #0b273d;">...</span></span>
+                                </p>
+                                <!--Average Rating Project-->
+                                <p class="total-budget grey bold mt-1">
+                                    <span>Average Rating:</span>
+                                    <span class="average-rating"
+                                        style="font-size: 15px; color: orange !important; font-weight: bold;">...</span>
+                                    <span id="r-one" class="fa fa-star rate-color rating-views-one"></span>
+                                    <span class="fa fa-star rate-color rating-views-one"></span>
+                                    <span class="fa fa-star rate-color rating-views-one"></span>
+                                    <span class="fa fa-star rate-color rating-views-one"></span>
+                                    <span class="fa fa-star rate-color rating-views-one"></span>
+                                    <span style="font-size: 15px;">
+                                        <i class="fa fa-user" style="font-size:14px; color: #0b273d;"></i>
+                                        <span data-total-raters style="color: #0b273d;">...</span>
+                                    </span>
+                                </p>
+                                <p class="total-budget grey bold mb-2 mt-2">Total Budget: <span class="stat-value"
+                                        data-project-budget>...</span></p>
+                                <p class="project-id grey bold mb-2">Project ID: <span class="stat-value"
+                                        data-project-id>...</span></p>
+                                <p class="start-date grey bold mb-2">Start Date: <span class="stat-value"
+                                        data-project-start-date>...</span></p>
+                                <p class="start-date grey bold mb-2">Due Date: <span class="stat-value"
+                                        data-project-due-date>...</span></p>
+                                <div class="start-date grey bold mb-2 user-vote-status">Vote Project Status: <br>
+                                    <div class="col-12 row">
+                                        <span onclick="voteProject('Not_Started')" class="border"
+                                            style="color: cadetblue;">Not Started
+                                            <span id="Not_Started">0</span>
+                                        </span>
+                                        <span onclick="voteProject('Abandoned')" class="border"
+                                            style="color: red;">Abandoned
+                                            <span id="Abandoned">0</span>
+                                        </span>
+                                        <span onclick="voteProject('In_Progress')" class="border"
+                                            style="color: brown;">In Progress
+                                            <span id="In_Progress">0</span>
+                                        </span>
+                                        <span onclick="voteProject('Completed')" class="border"
+                                            style="color: green;">Completed
+                                            <span id="Completed">0</span>
+                                        </span>
+                                    </div>
+                                    <span data-login-commnd-vote-status class="rate-command">
+                                        Your need to be logged in to rate a project! <a href="../login.html">Click to
+                                            login</a></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5 location-image mt-2 px-0">
+                                <div class="col-12 px-0 border">
+                                    <img data-project-wallpaper src="../images/DevelopND.png" alt="project wallpaper">
+                                </div>
+                            </div>
+                            <div class="col-12 status-progress px-0 pt-2 ">
+                                <span class="bold grey">Project Status: <span data-project-status>...</span></span>
+                                <!--Average Rating Project-->
+                                <p class="total-budget grey bold mt-3">
+                                    <span class="rated-header grey">Rate this Project:</span>
+                                    <span class="fa fa-star rate rate-color px-2"></span>
+                                    <span class="fa fa-star rate rate-color px-2"></span>
+                                    <span class="fa fa-star rate rate-color px-2"></span>
+                                    <span class="fa fa-star rate rate-color px-2"></span>
+                                    <span class="fa fa-star rate rate-color px-2"></span>
+                                    <span class="info-rate" data-star-info></span>
+                                </p>
+                                <div class="col-12 col-md-6 row" style="text-align: center;">
+                                    <span data-login-commnd class="rate-command">Your need to be <a
+                                            href="../login.html">login</a> to rate a project!</span>
+                                    <span data-submit-rating class="submit-rating strike col-3 pl-1">Submit</span>
+                                    <span data-cancel-rating class="cancel-rating strike col-3">Cancel</span>
+                                </div>
+                                <!-- <div class="progress col-12 col-md-9 px-0 mt-5" style="height: 2vh;">
+                                    <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                </div> -->
+                            </div>
+                            <div class="col-12 col-md-6 px-0 project-graph">
+                                <p class="total-budget grey bold mb-2 mt-4">Community /LGA /State: <span
+                                        class="stat-value" data-project-location>...</span></p>
+                                <div class="col-12 mx-auto embedded-map px-0">
+                                    <iframe style="width: 100%;margin: 0;padding: 0; height: 70vh;"
+                                        data-project-location-map id="gmap_canvas" src="" frameborder="0" scrolling="no"
+                                        marginheight="0" marginwidth="0"></iframe>
+                                </div>
+                            </div>
+                            <div class="budget-detail col-12 col-md-6">
+                                <p class="grey bold mt-4">Budget Allocations</p>
+                                <div class="budget-table col-12 col-md-12 border">
+                                    <div class="col-12 row budget-title px-2 border-bottom mx-0">
+                                        <p class=" col-6 grey bold mt-2 px-0">Allocation Year</p>
+                                        <p class=" col-6 grey bold mt-2 px-0">Allocation Amount</p>
+                                    </div>
+                                    <div data-project-allocations>
+
+                                    </div>
+                                    <div class="budget-data row col-12 px-0 border-top mx-0" data-allocated-data>
+                                        <span class="p-date col-6 px-0">Start Date:
+                                            <span class="stat-value" data-project-start-date-2>...</span>
+                                        </span>
+                                        <span class="p-date col-6 px-0">Due Date:
+                                            <span class="stat-value" data-project-due-date-2>...</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <p class="grey bold mt-4">Budget Description</p>
+                                <p class="budget-desc px-0 col-12 grey" data-project-view-desc>...</p>
+                                <!-- <p class="contractor-header bold grey">Contractors</p>
+                                <p class="contractor-desc px-0 col-12 grey mt-3"
+                                    data-project-contractors-info>Details about contractor [Not Specified]</p>
+                                <button class="btn btn-brand" data-project-download>Download CSV</button> -->
+                            </div>
+                            <!-- <div class="project-gallery col-12 row mx-0">
+                                <div class="col-12 col-md px-0 project-image mx-2 mt-3">
+                                    <img src="../images/three-buildings.png" alt="">
+                                </div>
+                                <div class="col-12 col-md px-0 project-image mx-2 mt-3">
+                                    <img src="../images/welcome-bg.png" alt="">
+                                </div>
+                                <div class="col-12 col-md px-0 project-image mx-2 mt-3">
+                                    <img src="../images/crane-building.png" alt="">
+                                </div>
+                                <div class="col-12 col-md px-0 project-image mx-2 mt-3">
+                                    <img src="../images/three-buildings.png" alt="">
+                                </div>
+                                <span class="view-gallery-link col-12 text-right font-12px grey">See More<i
+                                        class="fa fas fa-arrow-right ml-2"></i></span>
+                            </div> -->
+                            <div style="font-size: 5px !important;"
+                                class="project-activity col-12 col-md-10 col-lg-8 row mx-0 px-0 mb-2 mt-4">
+                                <div class="col-2 col-md-2 text-center px-0">
+                                    <span class="grey font-12px">
+                                        <i class="fa fas fa-lg fa-comments"></i>
+                                        <span data-project-comment></span>
+                                    </span>
+                                </div>
+                                <div class="col-2 col-md-2 text-center px-0 dropup">
+                                    <span id="shareSpan" class="grey shareSpan font-12px" style="cursor:pointer;"
+                                        data-project-id="${id}" data-project-type="${project_type}"
+                                        data-project-desc="${project_description}" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fas fa-lg fa-share-alt"></i>
+                                        <span>Share</span>
+                                    </span>
+                                    <div id="share-dropdown-menu" class="dropdown-menu col-12 px-0">
+
+                                    </div>
+                                </div>
+                                <div class="col-3  col-md-1 text-center px-0" data-report-project>
+                                    <span class="grey font-12px" style="color: red;" data-target="#reportProjectModal"
+                                        data-toggle="modal" data-project-report><i class="fa fas fa-lg fa-warning"></i>
+                                        <span>Report</span>
+                                    </span>
+                                </div>
+                                <div class="col-2 text-center px-0" data-save-project>
+                                    <span class="grey font-12px" id="saveProject" data-project-save>
+                                        <i class="fa fas fa-lg fa-save"></i>
+                                        <span>Save</span>
+                                    </span>
+                                </div>
+                                <div class="col-2 text-center px-0 reviewerLink" data-review-project-btn>
+                                    <span class="grey font-12px" style="color: coral;">
+                                        <i class="fa fas fa-lg fa-tasks"></i>
+                                        <span>Review</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-none col-12 col-md-10 pt-3 mx-auto comments-section">
+                            <div class="col-12 make-comment row mx-0 mb-5">
+                                <div class="col-12 col-md-2 col-lg-1 px-0">
+                                    <div class="user-image border mx-auto mt-3">
+                                        <img style="color: white; object-fit: cover;" src="../images/noimage.png"
+                                            alt="Project default image" data-user-image-comment>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-10 col-lg-11 comment-submit">
+                                    <form data-project-comment class="row mb-1">
+                                        <div class="form-group mb-1 col-12">
+                                            <textarea data-comment-box name="comment" maxlength="250"
+                                                style="font-size: 12px; resize: none;" class="col-12 mt-4 scroller"
+                                                class="form-control" placeholder="Add a public comment"></textarea>
+                                        </div>
+                                        <div class="col-6 col-md-6 comment-utilities px-0 row mx-0 mb-2">
+                                            <div class="select-anonymous ml-1">
+
+                                                <label for="myAnonymousCheck" data-anonymous-block>
+                                                    <i class="fa fas fa-eye-slash rounded-circle ml-2 mt-2 fa-xs"
+                                                        title="You are commenting as an anonymous user"
+                                                        style="cursor: pointer;"></i>
+                                                </label>
+                                                <input class="d-none" type="checkbox" id="myAnonymousCheck"
+                                                    data-anonymous-spot checked disabled>
+                                            </div>
+
+                                            <div class="select-comment-image ml-1">
+                                                <label for="myFileComment" data-file-block>
+                                                    <i class="fa fas fa-image ml-2 mt-2 fa-xs"
+                                                        title="Select media, 2 files per comment!"
+                                                        style="cursor: pointer;"></i>
+                                                    <span class="badge mr-2 comment-file-notify" data-file-notify
+                                                        style="background: white; color: green; font-weight: bold;"><span>
+
+                                                </label>
+                                                <input class="d-none" type="file" id="myFileComment" data-file-spot
+                                                    accept=".jpg, .jpeg, .png, .mp4, .avi" multiple>
+                                            </div>
+                                            <div class="select-comment-image ml-1" data-comment-delete>
+                                                <i title="Clear all selected files" data-comment-delete-icon
+                                                    class="fa fa-trash-o mt-2 fa-xs comment-files-delete"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-6 col-md-6 text-right">
+                                            <button data-comment-btn type="submit"
+                                                style="padding: 1px 6px;  font-size:13px;"
+                                                class="btn btn-brand br-10px py-0 border">Comment</button>
+                                        </div>
+                                    </form>
+                                    <div class="mx-0 px-0" data-comment-info
+                                        style="color:#0b273d; font-weight: bold; position: absolute;">
+                                        <!--Comment Info Block-->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Display when user is not logged in -->
+                            <div class="d-none non-user-warning mt-2 alert-danger rounded-sm">
+                                <p class="text-center p-3">You need to be logged in before you can comment.
+                                    <a class="bold" href="../login.html">Click to Login</a></p>
+                            </div>
+                            <div class="col-12 view-comments mb-3 scroller" id="view-comments">
+                                <!--All Comment Block-->
+                                <div class="col-1 spinner-con text-center" style="top: 20%;">
+                                    <div class="spinner-border mt-3" role="status">
+                                        <span class="sr-only">...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-none not-started-project col-11 col-md-10 mx-auto my-5 rounded-sm alert-primary">
+                            <p class="text-center py-3">You can't comment on this project because it's yet to start</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade documents-section" id="documents" role="tabpanel"
+                        aria-labelledby="documents-tab">
+                        <p style="text-align: center; font-size: large; font-weight: bold;">No Document Found!</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="col-12">
+                <div class="col-12 mx-auto footer-con px-0 row mx-0">
+                    <div class="col-12 col-md px-0 links-contact row mx-0">
+                        <div class="col-12 col-md-4 mt-5 tracker-copyright text-center">
+                            <span style="cursor: pointer;" class="mt-2 bold"
+                                onclick="location.href=window.origin">DevelopND</span>
+                            <p>&copy;DevelopND 2020</p>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 site-links px-0">
+                            <ul class="list-group">
+                                <!-- onclick="location.href='about.html'" -->
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../about.html">About Us</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../project/search-results.html">Projects</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../contact.html">Contact</a>
+                                </li>
+                                <!-- <li class="list-group-item py-1 px-1">
+                                    <a href="../testimonial.html">Testimonial</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../terms-condition.html">Terms and Conditions</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 contact-details px-0">
+                            <ul class="list-group">
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="https://www.stakeholderdemocracy.org/">
+                                        SDN Nigeria Secretariat,
+                                        13 Location Road, Off Tombia Extension,
+                                        Oroazi, G.R.A. Phase 3,
+                                        Port Harcourt
+                                    </a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">+234 (0) 703 1593 783</li>
+                                <li class="list-group-item py-1 px-1">info@stakeholderdemocracy.org</li>
+                                <li class="list-group-item py-1 px-1">info@developnd.ng</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md px-0 subscribe-social row mx-0">
+                        <div class="col-12 col-md-6 footer-subscribe mt-5">
+                            <span class="">Subscribe to our newsletter</span>
+                            <div class="special-input px-1 col-12 col-md-12 mx-auto row mx-0"
+                                style="border-radius: 2px;">
+                                <input id="email-sub-2" type="email" class="form-control col-12 col-md-9 my-1"
+                                    placeholder="Enter Email" required>
+                                <button id="subscribe-btn-2" class="btn btn-brand col-12 col-md-3 my-1 px-0"
+                                    style="border-radius: 2px;">Subscribe</button>
+                            </div>
+                        </div>
+                        <div class="footer-social col-12 col-md-6 mt-5 mb-3 row mx-0">
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="link-con mx-auto">
+                                    <a href="https://twitter.com/SDNNigerDelta" target="_blank">
+                                        <img class="mt-1" src="../images/twitter-brand.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="link-con mx-auto">
+                                    <a href="https://facebook.com/SDNNigerDelta/" target="_blank">
+                                        <img class="mt-1" src="../images/facebook-brand.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="sdn-link-con mx-auto">
+                                    <a href="https://www.stakeholderdemocracy.org/" target="_blank">
+                                        <img class="" src="../images/sdn-logo.jfif" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal fade" id="reportProjectModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form class="my-3" id="report-project-form">
+                        <p class="text-center">
+                            <span>Report this Project</span>
+                        </p>
+                        <div class="col-12 row mx-auto px-0">
+                            <div id="report-name" class="form-group col-6 pl-0 pr-1 mt-2">
+                                <label class="font-12px grey">Name</label>
+                                <input id="name" placeholder="" type="text" class="form-control">
+                            </div>
+                            <div id="report-email" class="form-group col-6 pl-1 pr-0 mt-2">
+                                <label class="font-12px grey">Email</label>
+                                <input id="email" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12 row mx-auto px-0">
+                            <div id="report-phone" class="form-group col-6 pl-0 pr-1 mt-2">
+                                <label class="font-12px grey">Phone</label>
+                                <input id="phone" type="text" class="form-control">
+                            </div>
+                            <div id="report-location" class="form-group col-6 pl-1 pr-0 mt-2">
+                                <label class="font-12px grey">State</label>
+                                <select id="location" name="location" class="custom-select" required>
+                                    <option value="" selected>Select</option>
+                                    <option value="ABIA">ABIA</option>
+                                    <option value="AKWA IBOM">AKWA IBOM</option>
+                                    <option value="BAYELSA">BAYELSA</option>
+                                    <option value="CROSS RIVER">CROSS RIVER</option>
+                                    <option value="DELTA">DELTA</option>
+                                    <option value="EDO">EDO</option>
+                                    <option value="IMO">IMO</option>
+                                    <option value="ONDO">ONDO</option>
+                                    <option value="RIVERS">RIVERS</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label class="grey font-12px">Your Report</label>
+                            <textarea id="report-project" id="report" type="text" class="form-control"
+                                style="resize: none;" required></textarea>
+                        </div>
+                        <div id="report-image" class="form-group mt-2">
+                            <label class="font-12px grey">Image</label>
+                            <input id="reportFile" type="file" class="form-control mb-2"
+                                accept="image/x-png,image/jpg,image/jpeg">
+                            <small style="color: red;"> Please image file with format [.png, .jpg, jpeg] are
+                                accepted</small>
+                        </div>
+                        <div class="form-group mt-3 col-12 row mx-0 px-0">
+                            <div class="col-4 px-0">
+                                <button type="submit" id="passBtn" class="btn btn-danger font-12px bold">Report</button>
+                            </div>
+                            <div class="select-anonymous col-8 px-0">
+
+                                <label class="rounded-circle" style="cursor: pointer;" for="">
+                                    <div id="not-anonymous">
+                                        <i class="fa fa-eye p-2 rounded-circle"
+                                            style="color: green; border: 1px solid grey"
+                                            title="You are not commenting as an anonymous user"></i>
+                                        <small class="font-12px" style="color: green;">You are not reporting
+                                            anonymously</small>
+                                    </div>
+                                    <div id="is-anonymous" class=" d-none">
+                                        <i class="fa fas fa-eye-slash p-2 rounded-circle"
+                                            style="color: grey; border: 1px solid grey"
+                                            title="You are commenting as an anonymous user"
+                                            style="cursor: pointer;"></i>
+                                        <small class="font-12px">You are reporting anonymously</small>
+                                    </div>
+                                </label>
+                                <input class="d-none" type="checkbox" id="" checked disabled>
+                            </div>
+                            <!-- <div class="col-9">
+                                <label class="form-check-label font-12px grey">
+                                    Report anonymously
+                                </label>
+                                <input class="form-check-input" type="checkbox" value="">
+                            </div> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="viewMessageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title" id="exampleModalLabel">From <span class="sender ml-1">Admin</span></p>
+                    <span class="time-received">10 mins ago</span>
+                </div>
+                <div class="modal-body">
+                    <h5 class="message-title">Lorem ipsum dolor sit.</h5>
+                    <p class="full-message">smile</p>
+                </div>
+                <div class="col-12 mb-4 text-right">
+                    <button type="button" class="btn btn-brand" data-dismiss="modal">Mark read</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Info modal -->
+
+    <div class="modal fade" id="notifyModal" data-backdrop="false" tabindex="-1" role="dialog"
+        aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm"
+            style="bottom: 0; position: absolute; width: 300px; margin: 10px; border-radius: 0px; padding: 5px;">
+            <div data-info-modal class="modal-content" id="info_content"
+                style="padding: 5px; background-color: white; font-size:12px;">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- newsletter status modal -->
+    <div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border:0px; padding: 0rem 1rem;">
+                    <button type="button" data-close class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="response">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="../js/general/third_party_cdn.js"></script>
+<script src="../js/general/placeholder.js"> </script>
+<script src="../js/apis/saveProject.js"></script>
+<script src="../js/apis/viewOneProject.js"></script>
+<script src="../js/manipulation/commentManipulationEngine.js"></script>
+<script src="../js/apis/createComment.js"></script>
+<script src="../js/apis/offlineComment.js"></script>
+<script src="../js/manipulation/offlineCommentDom.js"></script>
+<script src="../js/apis/createReplyComment.js"></script>
+<script src="../js/apis/viewAllComents.js"></script>
+<script src="../js/general/global.js"></script>
+<script src="../js/manipulation/rateProject.js"></script>
+<script src="../js/apis/storeRatingAPi.js"></script>
+<script src="../js/apis/newsletter.js"></script>
+<script src="../js/apis/reportAProject.js"></script>
+<script src="../js/apis/voteProjetctStatus.js"></script>
+<script src="../js/websocket_event/WebNotificationClass.js"></script>
+<script src="../js/websocket_event/webNotification.js"></script>
+<script src="../js/websocket_event/CommentNotificationClass.js"></script>
+<script src="../js/websocket_event/commentNotification.js"></script>
+<script>
+    //hide notification tab when not login
+    if (localStorage.getItem('token')) {
+        const anonymousBlock = document.querySelector('[data-anonymous-block]')
+        document.querySelector('#notification-tab').style.display = 'block';
+        document.querySelector("[data-user-drop-box]").style.display = "block";
+
+        //Remove the checked and disable atrribute from the anonymous icon
+        const anonymous_icon = document.querySelector('#myAnonymousCheck');
+        anonymous_icon.removeAttribute('disabled');
+        anonymous_icon.removeAttribute('checked');
+        //Update the Dom to visible user icon
+
+        anonymousBlock.innerHTML =
+            `<i class="fa fa-eye rounded-circle ml-2 mt-2 fa-xs" style="cursor:
+                                     pointer;" data-anonymous-icon title="You are not commenting as an anonymous user"></i>`;
+        anonymous_form = 'no';
+        document.querySelector('[data-anonymous-icon]').classList.add('custom-lightgreen');
+    }
+
+    (() => {
+        let validUser = JSON.parse(localStorage.getItem('DevelopND-user')) || false;
+        if (validUser) {
+            let {
+                user
+            } = validUser;
+            let myHref = document.querySelector('#user-or-reviewer');
+            let reviewLink = document.querySelector('.reviewerLink');
+
+            if (user.user_type === 'reviewer') {
+                myHref.setAttribute('href', '../account/reviewer/reviewer.html');
+                reviewLink.style.display = 'inline-block';
+            } else if (user.user_type === 'admin') {
+                myHref.setAttribute('href', '../account/admin/dashboard-home.html');
+                reviewLink.style.display = 'none';
+            } else {
+                myHref.setAttribute('href', '../account/user/dashboard.html');
+            }
+        }
+    })();
+
+    let reviewLocatn = document.querySelector('[data-review-project-btn]') || false;
+    console.log(reviewLocatn);
+    if (reviewLocatn) {
+        reviewLocatn.addEventListener('click', () => {
+            let id = getUrlParam.get('id');
+            location.replace(
+                `${window.location.origin}/account/reviewer/reviewed-project-details.html?id=${id}`);
+        });
+    }
+</script>
+<script>
+    let isAnonymous = document.querySelector('#is-anonymous');
+    let notAnonymous = document.querySelector('#not-anonymous');
+    let reportName = document.querySelector('#report-name');
+    isAnonymous.addEventListener('click', (event) => {
+        console.log('is anonymous')
+        // reportName.classList.add('d-none')
+        notAnonymous.classList.remove('d-none');
+        isAnonymous.classList.add('d-none');
+        document.getElementById('report-name').style.display = 'block';
+        document.getElementById('report-email').style.display = 'block';
+        document.getElementById('report-phone').style.display = 'block';
+        document.getElementById('report-location').classList.remove('col-12')
+        document.getElementById('report-location').classList.add('col-6')
+    })
+    notAnonymous.addEventListener('click', (event) => {
+        console.log('not anonymous')
+        // reportName.classList.remove('d-none')
+        notAnonymous.classList.add('d-none');
+        isAnonymous.classList.remove('d-none');
+        //Hide the name, phone, email field 
+        document.getElementById('report-name').style.display = 'none';
+        document.getElementById('report-email').style.display = 'none';
+        document.getElementById('report-phone').style.display = 'none';
+        document.getElementById('report-location').classList.remove('col-6')
+        document.getElementById('report-location').classList.add('col-12')
+    })
+</script>
+
+</html>

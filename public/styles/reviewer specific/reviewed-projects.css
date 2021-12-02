@@ -1,0 +1,126 @@
+.re-welcome-bg {
+  z-index: -1;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(11, 39, 61, 0.7)), to(rgba(11, 39, 61, 0.8))), url("../../images/welcome-bg.png");
+  background: linear-gradient(rgba(24, 95, 150, 0.541), rgba(12, 81, 134, 0.644)), url("../../images/welcome-bg.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.re-welcome-bg .welcome-words {
+  color: white;
+  padding: 2% 0;
+}
+
+.rp-jumbo .rp-jumbo-words h1 {
+  font-size: 40px;
+}
+
+.rp-jumbo .rp-jumbo-words h2 {
+  color: 30px;
+}
+
+.rp-nav .nav-item .nav-link {
+  color: #0b273d !important;
+  font-weight: bolder;
+}
+
+.category-name {
+  color: #0b273d;
+}
+
+.projects-grid-view .project-block .project-con {
+  min-height: 30vh;
+  color: grey;
+  background: white;
+}
+
+.projects-grid-view .project-block .project-con .project-block-image {
+  height: 20vh;
+}
+
+.projects-grid-view .project-block .project-con .project-block-image img {
+  height: 100%;
+  width: 100%;
+}
+
+.projects-grid-view .project-block .project-con span {
+  font-size: 12px;
+}
+
+.projects-grid-view .project-block .project-con button {
+  font-size: 12px;
+}
+
+.view-select {
+  height: 7vh;
+}
+
+.view-select div {
+  cursor: pointer;
+}
+
+.view-select div:hover {
+  background: lightgray;
+}
+
+.re-nav-panel {
+  display: none;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: #0B273D !important;
+  -webkit-animation-name: slideIn;
+          animation-name: slideIn;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  z-index: 1;
+}
+
+@-webkit-keyframes slideIn {
+  from {
+    right: -300px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    right: -300px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+.re-nav-panel ul {
+  list-style-type: none;
+}
+
+.re-nav-panel li:first-child {
+  cursor: pointer;
+}
+
+.re-search-btn {
+  background: #0B273D !important;
+}
+
+#pageStats {
+  color: dodgerblue;
+}
+
+.border-3 {
+  border-width: 3px !important;
+}
+
+.border-success {
+  border-color: #0B273D !important;
+}
+.status-designed{
+  border-radius: 5px !important;
+}

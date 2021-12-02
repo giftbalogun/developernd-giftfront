@@ -1,0 +1,129 @@
+*:focus {
+    border: 0;
+    outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: bold;
+}
+body {
+    overflow: hidden;
+}
+
+.navbar-brand {
+    margin-left: 3%;
+}
+/* nav modal display toggle in mobile view */
+.re-nav-panel {
+    display: none;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background: #0B273D !important;
+    animation-name: slideIn;
+	animation-duration: 0.5s;
+    z-index: 1;
+}
+@keyframes slideIn {
+	from {right: -300px; opacity: 0;}
+	to {right: 0; opacity: 1;}
+}
+.re-nav-panel ul {
+    list-style-type: none;
+}
+.re-nav-panel li:first-child {
+    cursor: pointer;
+}
+
+.re-welcome-bg {
+    z-index: -1;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(11, 39, 61, 0.7)), to(rgba(11, 39, 61, 0.8))), url("../../images/welcome-bg.png");
+    background: linear-gradient(rgba(24, 95, 150, 0.541), rgba(12, 81, 134, 0.644)), url("../../images/welcome-bg.png");
+    background-position: center;
+    background-size: cover;
+}
+.welcome-words {
+    color: white;
+}
+
+.re-search-btn {
+    background: rgba(11, 39, 61, 0.699) !important;
+} 
+.re-save, .re-change-pw {
+    background: #0B273D;
+    color: white;
+    opacity: 0.9;
+}
+.re-panel {
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+#re-colapse-btn {
+    transition: rotate 0.2s;
+}
+.float-right.rotate-btn {
+    transform: rotate(180deg);
+}
+
+.form-group.required .control-label:after {
+    content:"*";
+    color:red;
+  }
+.re-change-password {
+    font-size: 14px;
+}
+.re-save:hover, .re-change-pw:hover {
+    color: white;
+    opacity: 1;
+}
+.re-second-header {
+    background: #f0eeee75;
+}
+.re-main {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 100px;
+}
+.re-panel img {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+#re-spinner {
+    position: relative;
+    left: 50%;
+}
+#no-btn {
+    cursor: default;
+}
+#no-btn:active, #no-btn:hover {
+    background: none;
+    border: 1px;
+    outline: none;
+}
+.re-panel-ul li{
+    border: 1px solid #d8d6d6;
+    border-bottom: 0;
+}
+.re-tab {
+    display: none;
+}
+#no-btn:hover {
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.re-tab  tr:nth-child(even) {
+    background: #f0eeee75;
+}
+.my-assignment > span {
+    background: #f0eeee75;
+    color: black;
+    font-weight: bold;
+    border: 1px solid #cec8c8e0;
+    opacity: 0.7;
+}
+
+.my-assignment span:hover {
+    background: #dfecf7e5;
+    cursor: pointer;
+}
+/* .re-nav, */

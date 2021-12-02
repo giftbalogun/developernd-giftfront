@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title data-title>Admin Home | DevelopND</title>
+    <link rel="icon" href="../../images/developnd-logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/index.css">
+    <link rel="stylesheet" href="../../styles/dashboard.css">
+    <link rel="stylesheet" href="../../styles/admin-dashboard.css">
+    <link rel="stylesheet" href="../../package/Year-Picker-Text-Input/yearpicker.css">
+    <script src="../../js/general/routes.js"></script>
+    <script src=" ../../js/general/placeholder.js"> </script>
+    <script src="../../js/general/onSession.js"></script>
+</head>
+
+<body id="dashboard-home" class="nunito scroller">
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <!-- <div class="col-12 dash-logo mt-3">
+                <img class="ml-3" src="../images/logo.png" alt="" />
+            </div> -->
+            <a class="navbar-brand mt-3" style="cursor: pointer; margin-left: 1vw;"
+                onclick="location.href=`${window.location.origin}`">
+                <div class="logo-replace">
+                    <img src="../../images/developnd-logo.png" alt="logo">
+                </div>
+                <span class="ml-2 mt-1 bold">DevelopND</span>
+            </a>
+            <ul class="list-unstyled components">
+                <li class="mt-4 current">
+                    <a href="dashboard-home.html"><i class="fa fas mr-3 fa-dashboard"></i>Dashboard</a>
+                </li>
+                <li class="mt-4">
+                    <a href="admin-projects.html"><i class="fa fas mr-3 fa-cubes"></i>Projects</a>
+                </li>
+               
+                <li class="mt-4">
+                    <a href="admin-users.html"><i class="fa fas mr-3 fa-user"></i>Users</a>
+                </li>
+                <li class="mt-4">
+                    <a href="reports.html"><i class="fa fas mr-3 fa-book"></i>Reports</a>
+                </li>
+                <li class="mt-4">
+                    <a href="text-messages.html"><i class="fa fas mr-3 fa-envelope"></i>Text Messages</a>
+                </li>
+                <li id="sidebar-logout" class="mt-4" onclick="sidebarLogoutFunc()">
+                    <span style="color: red"><i class="fa fas mr-3 ml-4 fa-sign-out" style="color:red"></i>Logout</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <nav class="navbar navbar-expand-lg navbar-dark our-nav col-12">
+
+                        <button style="float: right;" class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto nav-utilities">
+                                <!-- <li class="nav-item mx-3 mt-2">
+                                    <a class="nav-link" href="#">Categories</a>
+                                </li> -->
+                                <li class="nav-item mx-3 mt-2 px-2 custom-nav-li">
+                                    <a class="nav-link" style="cursor: pointer; margin: 0;"
+                                        onclick="location.href=`${window.location.origin}/project/search-results.html`">Search</a>
+                                </li>
+                                <div class="dropdown mt-2 mx-1" id="notification-tab">
+                                    <i class="fa fas fa-bell mr-3 mt-2 dropdown-icon" id="notificationsDropdown"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                    <span class="badge" data-toggle="dropdown" data-real-time-count></span>
+                                    <div class="dropdown-menu action-dropdown border"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                            <span class="col-6" data-notification-unread-count>3 unread
+                                                notifications</span>
+                                            <span class="col-6 text-right mark-as-read" data-mark-as-read>Mark all as
+                                                read</span>
+                                        </div>
+                                        <div class="col-12 px-0 dropdown-body scroller" data-notification-DOM>
+                                            <span class="spinner-border spinner-border-sm mx-0" style=" float: center;"
+                                                role="status">
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="dropdown mt-2 mx-1">
+                                    <i class="fa fas fa-envelope mr-3 mt-2 dropdown-icon" id="messagesDropdown"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                    <span class="badge">1</span>
+                                    <div class="dropdown-menu action-dropdown border"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                            <span class="col-6">3 messages</span>
+                                            <span class="col-6 text-right mark-as-read">Mark all as read</span>
+                                        </div>
+                                        <div class="col-12 px-0 dropdown-body scroller">
+                                            <div class="col-12 indiv-info row mx-0">
+                                                <div class="info-actual-con col-12" data-toggle="modal"
+                                                    data-target="#viewMessageModal">
+                                                    <p class="info-words mb-0 mt-2">New broadcast message</p>
+                                                    <span class="info-time">12 min ago</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <li class="nav-item dropdown" data-user-drop-box>
+                                    <a class="nav-link" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="nav-user row mx-0">
+                                            <div class="col-10 col-md-8 px-0 pl-2 mt-2 text-right data-user-name">
+                                                <span class="" id="nav-name" data-user-name>...</span>
+                                            </div>
+                                            <div class="col-2 col-md-4 px-0">
+                                                <div class="nav-image mr-auto mx-3 border">
+                                                    <img class="" id="nav-user-image" data-user-image
+                                                        src="../../images/noimage.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- dashboard.html -->
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a id="user-or-reviewer" class="dropdown-item" href="#">Dashboard</a>
+                                        <a class="dropdown-item" href="../user/profile-settings.html">Settings</a>
+                                        <a class="dropdown-item" href="#">Help</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="statistics-full col-12 scroller">
+                        <button type="button" id="sidebarCollapse" class="btn sidebar-btn p-1 mt-2 ml-2">
+                            <i class="fas fa fa-align-left"></i>
+                        </button>
+                        <div class="time-filter col-12 text-right">
+                            <ul class="list-inline ml-auto">
+                                <li class="mx-3"><a href="#">Today</a></li>
+                                <li class="mx-3"><a href="#">Last 7d</a></li>
+                                <li class="mx-3"><a href="#">Last 30d</a></li>
+                            </ul>
+                        </div>
+                        <div class="statistics-con scroller col-12 row mx-0">
+                            <div class="col-4 col-md px-0">
+                                <span>All Users</span>
+                                <p id="total-user-value" class="mb-0">
+                                    loading...
+                                </p>
+                                <!-- <small><span>+20%</span> compared to last month</small> -->
+                            </div>
+                            <div class="col-4 col-md px-0">
+                                <span>Total Projects</span>
+                                <p id="total-project-value" class="mb-0">
+                                    loading...
+                                </p>
+                                <!-- <small><span>+1%</span> compared to last month</small> -->
+                            </div>
+                            <div class="col-4 col-md px-0">
+                                <span>Completed Projects</span>
+                                <p id="total-completed-value" class="mb-0">loading...</p>
+                                <!-- <small><span>+5%</span> compared to last month</small> -->
+                            </div>
+                            <div class="col-4 col-md px-0">
+                                <span>Projects in progress</span>
+                                <p id="total-in-progress-value" class="mb-0">loading...</p>
+                                <!-- <small><span>+3%</span> compared to last month</small> -->
+                            </div>
+                            <div class="col-4 col-md px-0">
+                                <span>Total Comments</span>
+                                <p id="total-comment-value" class="mb-0">loading...</p>
+                                <!-- <small><span>+2%</span> compared to last month</small> -->
+                            </div>
+                            <!-- <div class="col-4 col-md px-0">
+                                <span>Abandoned Projects</span>
+                                <p class="mb-0">1800</p>
+                                <small><span>+1%</span> compared to last month</small>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="stat-cards-full col-12 row mx-0 scroller">
+                        <div class="col-12 text-right mt-3">
+                            <button class="btn btn-brand font-12px" data-toggle="modal"
+                                data-target="#adminMessageModal">Send Admin Message</button>
+                        </div>
+                        <div class="col-12 col-md-5 users-chart-con px-2">
+                            <div id="users-chart" class="col-12 stat-card mt-3">
+                                <span id="getting-users-chart">
+                                    <div class="col-1 spinner-con" id="spinner-users">
+                                        <div class="spinner-border mt-3" role="status">
+                                            <span class="sr-only">loading...</span>
+                                        </div>
+                                    </div>
+                                </span>
+                                <canvas id="usersChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 projects-chart-con px-2">
+                            <div id="projects-chart" class="col-12 stat-card mt-3">
+                                <span id="getting-project-chart">
+                                    <div class="col-1 spinner-con" id="spinner-users">
+                                        <div class="spinner-border mt-3" role="status">
+                                            <span class="sr-only">loading...</span>
+                                        </div>
+                                    </div>
+                                </span>
+                                <canvas id="projectChart" class="">
+                                </canvas>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3 views-count-con px-2">
+                            <div class="col-12 stat-card mt-3 pt-2">
+                                <span class="">Views</span>
+                                <p id="total-views-value" class="mb-2">...</p>
+                                <span class="">Reviews</span>
+                                <p id="total-reviews-value" class="mb-2">...</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 recently-joined-con px-2 mb-5">
+                            <div class="col-12 stat-card mt-3 scroller">
+                                <div class="col-12 row mx-0 px-0 top-lane mt-3">
+                                    <h6 class="col-8 mb-0 px-0">Recently Joined</h6>
+                                    <span class="col-4 text-right px-0">Location</span>
+                                </div>
+                                <div class="col-12 px-0" id="recent-users-holder">
+                                    <div class="col-1 spinner-con" id="spinner-recent-users">
+                                        <div class="spinner-border mt-3" role="status">
+                                            <span class="sr-only">loading...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-5 recent-reviews-con px-2 mb-5">
+                            <div class="col-12 stat-card border mt-3 scroller">
+                                <div class="col-12 px-0 top-lane mt-3">
+                                    <h6 class="mb-0 px-0">Recent Reviews</h6>
+                                </div>
+                                <div class="col-12 px-0" id="review-holder">
+                                    <div class="col-1 spinner-con" id="spinner-reviews">
+                                        <div class="spinner-border mt-3" role="status">
+                                            <span class="sr-only">loading...</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3 top-active-con px-2 mb-5">
+                            <div class="col-12 stat-card border mt-3 scroller">
+                                <div class="col-12 row mx-0 px-0 top-lane mt-3">
+                                    <h6 class="col-8 mb-0 px-0">Top active projects</h6>
+                                    <span class="col-4 text-right px-0">Views</span>
+                                </div>
+                                <div class="col-12 px-0" id="active-projects-holder">
+                                    <div class="col-1 spinner-con" id="spinner-active-projects">
+                                        <div class="spinner-border mt-3" role="status">
+                                            <span class="sr-only">loading...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="adminMessageModal" tabindex="-1" role="dialog" aria-labelledby="adminMessageModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form id="send-message-form" class="col-11 mx-auto mb-3 admin-message-form px-0">
+                        <p class="my-4">
+                            <span>Send an admin message</span>
+                        </p>
+                        <div id="select-receiver" class="form-group mb-3">
+                            <label for="to">Who are you sending this to?</label>
+                            <div class="form-check">
+                                <input class="form-check-input receiver-input" type="checkbox" value="all"
+                                    id="allCheck">
+                                <label class="form-check-label" for="allCheck">
+                                    All
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input receiver-input" type="checkbox" value="community_members"
+                                    id="communityCheck">
+                                <label class="form-check-label" for="communityCheck">
+                                    CommunityMembers
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input receiver-input" type="checkbox" value="reviewers"
+                                    id="reviewersCheck">
+                                <label class="form-check-label" for="reviewersCheck">
+                                    Reviewers
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input receiver-input" type="checkbox" value="contractors"
+                                    id="contractorsCheck">
+                                <label class="form-check-label" for="contractorsCheck">
+                                    Contractors
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="message">Message</label>
+                            <textarea type="text" id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn" class="btn btn-brand my-3 font-12px submit-btn"> SEND
+                            MESSAGE
+                            <!-- <div class="spinner-border spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div> -->
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="messageResponseModal" tabindex="-1" role="dialog"
+        aria-labelledby="messageResponseModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <span id="messageResponseSpan"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../js/general/third_party_cdn.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="../../js/manipulation/userData.js"></script>
+<script src="../../js/general/global.js"></script>
+<script src="../../js/websocket_event/WebNotificationClass.js"></script>
+<script src="../../js/websocket_event/webNotification.js"></script>
+<script src="js/getstats.js"></script>
+<script src="js/projectChart.js"></script>
+<script src="js/recentReviews.js"></script>
+<script src="js/recentUsers.js"></script>
+<script src="js/activeProjects.js"></script>
+<script src="js/adminMessage.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+            $("#sidebar").toggleClass("active");
+        });
+    });
+</script>
+<!-- <script src="../../package/Year-Picker-Text-Input/yearpicker.js"></script>
+
+<script>
+    $('.yearpicker').yearpicker();
+
+    $('#sheet').on('change', function () {
+        //get the file name
+        var fileName = $(this).val();
+        var cleanFileName = fileName.replace('C:\\fakepath\\', " ");
+        //replace the "Choose a file" label
+        $(this).next('.custom-file-label').html(cleanFileName);
+    });
+</script> -->
+
+</html>

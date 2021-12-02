@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Import Projects | DevelopND</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta name="description"
+        content="DevelopND is a web app where you can track all project relating to your community.">
+    <link rel="icon" href="../../images/developnd-logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="../../package/Year-Picker-Text-Input/yearpicker.css">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/admin-dashboard.css">
+</head>
+
+<body class="nunito scroller">
+        
+    <div class="container-fluid">
+        <div class="import-preloader" id="import-preloader">
+            <p class="text-loader animated fadeIn infinite">Importing Project</p>
+        </div>
+        <div class="row">
+            <div class="col-12 import-full">
+                <div class="col-10 col-md-5 import-con mt-4 mx-auto border">
+                    <form class="col-11 mx-auto mb-3" id="import-project">
+                        <p class="text-center my-4">
+                            <span>import projects</span>
+                        </p>
+                        <div class="form-row">
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                    <input name="import_file" data-file name="sheet" type="file" class="custom-file-input" id="sheet"
+                                        accept=".xlsx, .xls">
+                                    <label class="custom-file-label" style="white-space: nowrap; overflow: hidden; text-overflow: clip; " for="sheet">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 row px-0 mx-auto">
+                            <div class="col-6 pl-0 pr-1 form-group">
+                                <label>Owner</label>
+                                <input  id="owner" name="project_owner" placeholder="[eg: NDDC, NNPC]" data-start-row type="text" class="form-control">
+                            </div>
+                            <div class="col-6 pl-1 pr-0 form-group">
+                                <label for="sheet_name">Sheetname</label>
+                                <select id="state" name="sheet_name"  class="custom-select">
+                                    <option value="" selected>Select</option>
+                                    <option value="ABIA">ABIA</option>
+                                    <option value="AKWA IBOM">AKWA IBOM</option>
+                                    <option value="BAYELSA">BAYELSA</option>
+                                    <option value="CROSS RIVER">CROSS RIVER</option>
+                                    <option value="DELTA">DELTA</option>
+                                    <option value="EDO">EDO</option>
+                                    <option value="IMO">IMO</option>
+                                    <option value="ONDO">ONDO</option>
+                                    <option value="RIVERS">RIVERS</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 row px-0 mx-auto">
+                            <div class="col-6 pl-0 pr-1 form-group">
+                                <label>start row</label>
+                                <input  id="start_row" name="start_row" data-start-row type="number" value="1" class="form-control">
+                            </div>
+                            <div class="col-6 pl-1 pr-0 form-group">
+                                <label>end row</label>
+                                <input id="end_row" name="end_row" type="number" value="499" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12 row px-0 mx-auto">
+                            <label class="col-12 px-0"> Allocated Years</label>
+                            <div class="col-6 pl-0 pr-1 form-group">
+                                <input id="approved_year_one" type="number" class="form-control yearpicker" ">
+                            </div>
+                            <div class="col-6 pl-1 pr-0 form-group">
+                                <input  id="approved_year_two" type="number" class="form-control yearpicker">
+                            </div>
+                            <p class="info-span" style="font-size: 9px; margin: 0; text-align: left; position: absolute; bottom: 0;">Please allocated years should be last of 2year only!</p>
+                        </div>
+                        <button type="submit" id="importProjectBtn" class="btn btn-brand col-12 mt-3" disabled>IMPORT</button>
+                    </form>
+                </div>
+                <p class="info-span" id="info-span">Please note: import range should be less or equal to 499 in difference!</p>
+
+                <!-- <div class="col-10 col-md-5 table-con px-0 my-4 mx-auto border">
+                    <div class="col-12 table-full px-0 scroller">
+                        <table class="table table-borderless mt-0 mb-5 col-11 mx-auto px-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" scope="col">#</th>
+                                    <th class="text-center" scope="col">State</th>
+                                    <th class="text-center" scope="col">Start Row</th>
+                                    <th class="text-center" scope="col">End Row</th>
+                                    <th class="text-center" scope="col">Year</th>
+                                </tr>
+                                <tr class="spacer"></tr>
+                            </thead>
+                            <tbody class="">
+                                <tr class="info-row">
+                                    <th class="pt-4" scope="row"><span class="ml-3">1</span></th>
+                                    <td>
+                                        <p class="mt-2 text-center">Abia</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">299</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">699</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">2017</p>
+                                    </td>
+                                </tr>
+                                <tr class="spacer"></tr>
+                                <tr class="info-row">
+                                    <th class="pt-4" scope="row"><span class="ml-3">1</span></th>
+                                    <td>
+                                        <p class="mt-2 text-center">Abia</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">0</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">299</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">2018</p>
+                                    </td>
+                                </tr>
+                                <tr class="spacer"></tr>
+                                <tr class="info-row">
+                                    <th class="pt-4" scope="row"><span class="ml-3">1</span></th>
+                                    <td>
+                                        <p class="mt-2 text-center">Abia</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">299</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">699</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">2017</p>
+                                    </td>
+                                </tr>
+                                <tr class="spacer"></tr>
+                                <tr class="info-row">
+                                    <th class="pt-4" scope="row"><span class="ml-3">1</span></th>
+                                    <td>
+                                        <p class="mt-2 text-center">Abia</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">0</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">299</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">2018</p>
+                                    </td>
+                                </tr>
+                                <tr class="spacer"></tr>
+                                <tr class="info-row">
+                                    <th class="pt-4" scope="row"><span class="ml-3">1</span></th>
+                                    <td>
+                                        <p class="mt-2 text-center">Abia</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">299</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">699</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">2017</p>
+                                    </td>
+                                </tr>
+                                <tr class="spacer"></tr>
+                                <tr class="info-row">
+                                    <th class="pt-4" scope="row"><span class="ml-3">1</span></th>
+                                    <td>
+                                        <p class="mt-2 text-center">Abia</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">0</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">299</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center mt-2">2018</p>
+                                    </td>
+                                </tr>
+                                <tr class="spacer"></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="border:0px; padding: 0rem 1rem;">
+              <button type="button" data-close class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="response" style="text-align: center;">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <script src="../../js/general/third_party_cdn.js"></script>
+    <script src="../../js/general/placeholder.js"></script>
+    <script src="../../js/general/routes.js"></script>
+    <script src="js/importProjectApi.js"></script>
+    <script src="../../package/Year-Picker-Text-Input/yearpicker.js"></script>
+
+    <script>
+        
+        $('.yearpicker').yearpicker();
+
+        $('#sheet').on('change', function () {
+            //get the file name
+            var fileName = $(this).val();
+            var cleanFileName = fileName.replace('C:\\fakepath\\', " ");
+            //replace the "Choose a file" label
+            $(this).next('.custom-file-label').html(cleanFileName);
+        });
+    </script>
+</body>
+
+</html>

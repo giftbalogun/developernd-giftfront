@@ -1,0 +1,513 @@
+.project-header {
+  min-height: 13vh;
+  background: rgba(11, 39, 61, 0.7);
+  color: white;
+}
+
+.project-full .nav-item .nav-link {
+  background-color: inherit;
+  color: grey;
+  border-radius: 0px;
+  font-weight: 100;
+}
+
+.project-full .nav-item .nav-link.active {
+  font-weight: bold;
+  border-bottom: 3px solid grey;
+}
+
+.project-full .summary-section .project-detailed {
+  min-height: 100vh;
+}
+
+.project-full .summary-section .project-detailed .stat-value {
+  color: #0b273d;
+}
+
+.project-full .summary-section .project-detailed .location-image div img {
+  height: auto;
+  width: 100%;
+}
+
+.project-full .summary-section .project-detailed .status-progress .progress {
+  height: 5vh;
+  background: #0b273d;
+}
+
+.project-full .summary-section .project-detailed .status-progress .progress .progress-bar {
+  background: #54d0ed;
+}
+
+.project-full .summary-section .project-detailed .project-graph .embedded-map {
+  height: 70vh;
+}
+
+.project-full .summary-section .project-detailed .project-graph .embedded-map iframe {
+  height: 100%;
+  width: 100%;
+}
+
+.project-full .summary-section .project-detailed .budget-detail {
+  height: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .project-full .summary-section .project-detailed .budget-detail {
+    padding: 0px;
+  }
+}
+
+.project-full .summary-section .project-detailed .budget-detail .budget-table {
+  min-height: 20vh;
+}
+
+.project-full .summary-section .project-detailed .budget-detail .budget-table .budget-title {
+  min-height: 5vh;
+}
+
+.project-full .summary-section .project-detailed .project-gallery {
+  min-height: 50vh;
+}
+
+.project-full .summary-section .project-detailed .project-gallery .project-image {
+  height: 40vh;
+}
+
+.project-full .summary-section .project-detailed .project-gallery .project-image img {
+  height: 100%;
+  width: 100%;
+}
+
+.project-full .summary-section .project-detailed .project-gallery .view-gallery-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.project-full .summary-section .project-detailed .project-activity div {
+  cursor: pointer;
+}
+
+.project-full .summary-section .comments-section {
+  min-height: 100vh;
+}
+
+.project-full .summary-section .comments-section .make-comment {
+  min-height: 15vh;
+  background: #0b273d;
+  border-radius: 10px;
+}
+
+.project-full .summary-section .comments-section .make-comment .user-image {
+  height: 12vh;
+  width: 12vh;
+  border-radius: 50%;
+}
+
+.project-full .summary-section .comments-section .make-comment .user-image img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.project-full .summary-section .comments-section .make-comment .comment-submit textarea {
+  background: #0b273d;
+  color: white;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  font-size: 12px;
+  height: 6vh;
+}
+
+.project-full .summary-section .comments-section .make-comment .comment-submit textarea:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+.project-full .summary-section .comments-section .make-comment .comment-submit button {
+  height: 5vh;
+}
+
+.project-full .summary-section .comments-section .make-comment .comment-submit .comment-utilities div {
+  height: 5vh;
+  width: 5vh;
+  border-radius: 50%;
+  background: inherit;
+  -webkit-filter: brightness(0.7);
+          filter: brightness(0.7);
+}
+
+.project-full .summary-section .comments-section .make-comment .comment-submit .comment-utilities div:hover {
+  -webkit-filter: brightness(1);
+          filter: brightness(1);
+  cursor: pointer;
+}
+
+.project-full .summary-section .comments-section .make-comment .comment-submit .comment-utilities div i {
+  color: white;
+}
+
+.project-full .summary-section .comments-section .view-comments {
+  max-height: 150vh;
+}
+
+.project-full .summary-section .comments-section .view-comments .comment-image {
+  height: 12vh;
+  width: 12vh;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .project-full .summary-section .comments-section .view-comments .comment-image {
+    height: 6vh;
+    width: 6vh;
+  }
+}
+
+.project-full .summary-section .comments-section .view-comments .comment-image img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.project-full .summary-section .comments-section .view-comments .media-body .comment-actual {
+  font-size: 14px;
+  line-height: 2vh;
+}
+
+.project-full .summary-section .comments-section .view-comments .media-body .comment-media video {
+  background: black;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  height: 35vh;
+}
+
+@media (max-width: 768px) {
+  .project-full .summary-section .comments-section .view-comments .media-body .comment-media video {
+    height: 20vh;
+  }
+}
+
+.project-full .summary-section .comments-section .view-comments .media-body .comment-media img {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  height: 35vh;
+}
+
+@media (max-width: 768px) {
+  .project-full .summary-section .comments-section .view-comments .media-body .comment-media img {
+    height: 20vh;
+  }
+}
+
+.project-full .summary-section .comments-section .view-comments .media-body .comment-activity i {
+  cursor: pointer;
+}
+
+.project-full .summary-section .comments-section .view-comments .view-all-replies {
+  color: #54d0ed;
+}
+
+.project-full .summary-section .comments-section .view-comments .reply-input-con {
+  min-height: 10vh;
+  background: #0b273d;
+  border-radius: 10px;
+}
+
+.project-full .summary-section .comments-section .view-comments .reply-input-con textarea {
+  background: #0b273d;
+  color: white;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  font-size: 12px;
+  height: 6vh;
+}
+
+.project-full .summary-section .comments-section .view-comments .reply-input-con textarea:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+.project-full .summary-section .comments-section .view-comments .reply-input-con .comment-utilities div {
+  height: 5vh;
+  width: 5vh;
+  border-radius: 50%;
+  background: inherit;
+  -webkit-filter: brightness(0.7);
+          filter: brightness(0.7);
+}
+
+.project-full .summary-section .comments-section .view-comments .reply-input-con .comment-utilities div:hover {
+  -webkit-filter: brightness(1);
+          filter: brightness(1);
+  cursor: pointer;
+}
+
+.project-full .summary-section .comments-section .view-comments .reply-input-con .comment-utilities div i {
+  color: white;
+}
+
+.project-full .documents-section {
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .project-full .comment_entity {
+    text-align: right !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .project-full .comment_entity {
+    text-align: center !important;
+  }
+}
+
+.comment-file-notify {
+  display: none;
+}
+
+.comment-files-delete {
+  display: none;
+}
+
+[data-comment-box]::-webkit-input-placeholder {
+  color: white;
+}
+
+/*Place holder error for input */
+.placeholder-sty::-webkit-input-placeholder {
+  color: #c7ada8;
+}
+
+.placeholder-sty-font {
+  font-size: 12px !important;
+}
+
+.placeholder-sty-font::-webkit-input-placeholder {
+  font-size: 12px !important;
+  color: white;
+}
+
+.placeholder-sty::-webkit-input-placeholder {
+  color: tomato;
+}
+
+#notification-tab {
+  display: none;
+}
+
+[data-user-drop-box] {
+  display: none;
+}
+
+.reply-input-off {
+  display: none;
+}
+
+.hide-reply-btn {
+  display: none;
+}
+
+.all-comment {
+  display: none;
+}
+
+.custom-lightgreen {
+  color: lawngreen !important;
+}
+
+.track-login-user {
+  display: none;
+}
+
+.submit-rating {
+  color: #0b273d;
+  border: 1px solid #0b273d;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 12px;
+  font-size: 12px;
+  padding-right: 12px;
+  cursor: pointer;
+}
+
+.submit-rating:hover {
+  opacity: 0.8;
+}
+
+.strike {
+  display: none;
+}
+
+.cancel-rating {
+  color: red;
+  border: 1px solid red;
+  font-weight: bold;
+  font-size: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 12px;
+  cursor: pointer;
+  padding-right: 12px;
+}
+
+.cancel-rating:hover {
+  opacity: 0.8;
+}
+
+.rate {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .rate {
+    font-size: 15px;
+  }
+}
+
+.info-rate {
+  font-size: 10px;
+  color: green;
+}
+
+@media (max-width: 768px) {
+  .info-rate {
+    display: block;
+  }
+}
+
+.rate-command {
+  color: black;
+  text-decoration: underline;
+  border-radius: 5px;
+  font-weight: 850px !important;
+  padding: 8px;
+  font-size: 12px !important;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .rate-command {
+    font-size: 10px;
+    font-weight: bold;
+  }
+}
+
+.rate-command:hover {
+  background: none !important;
+}
+
+.p-date {
+  color: grey;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .p-date {
+    font-size: 9px;
+    font-weight: bold;
+  }
+}
+
+#reportProjectModal form span {
+  color: red;
+  border: 1px solid transparent;
+  border-bottom: 2px solid red;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#reportProjectModal form label {
+  color: #0b273d;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+#reportProjectModal form input,
+#reportProjectModal form textarea,
+#reportProjectModal form select {
+  border: none;
+  border-bottom: 2px solid #0b273d;
+  font-size: 14px;
+  border-radius: 0px;
+  font-weight: bold;
+}
+
+#reportProjectModal form input:focus, #reportProjectModal form input:active,
+#reportProjectModal form textarea:focus,
+#reportProjectModal form textarea:active,
+#reportProjectModal form select:focus,
+#reportProjectModal form select:active {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.project-title {
+  font-size: 15px !important;
+}
+
+@media (max-width: 768px) {
+  .project-title {
+    font-size: 12px !important;
+  }
+}
+
+.user-vote-status span {
+  font-size: 12px !important;
+  padding: 2px 6px 2px 6px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.user-vote-status span:hover {
+  background: #e6e6e6;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .user-vote-status span {
+    font-size: 8px !important;
+    margin: 1px;
+    padding: 2px 5px 2px 5px;
+  }
+}
+
+.rate-command {
+  color: black;
+  text-decoration: underline;
+  border-radius: 5px;
+  font-weight: bold !important;
+  padding: 8px;
+  font-size: 12px !important;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .rate-command {
+    font-size: 10px;
+    font-weight: bold;
+  }
+}
+
+.rate-command:hover {
+  background: none !important;
+}
+
+.user_type {
+  color: #0b273d !important;
+  font-weight: bold !important;
+  font-size: 8px !important;
+}
+/*# sourceMappingURL=projects.css.map */

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title data-title>Project | DevelopND</title>
+    <link rel="icon" href="../../images/developnd-logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/index.css">
+    <link rel="stylesheet" href="../../styles/dashboard.css">
+    <link rel="stylesheet" href="../../styles/admin-dashboard.css">
+    <link rel="stylesheet" href="../../styles/admin-projects.css">
+    <link rel="stylesheet" href="../../package/Year-Picker-Text-Input/yearpicker.css">
+    <script src="../../js/general/routes.js"></script>
+    <script src=" ../../js/general/placeholder.js"> </script>
+    <script src="../../js/general/onSession.js"></script>
+</head>
+
+<body class="nunito scroller">
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <a class="navbar-brand mt-3" style="cursor: pointer; margin-left: 1vw;"
+                onclick="location.href=`${window.location.origin}`">
+                <div class="logo-replace">
+                    <img src="../../images/developnd-logo.png" alt="logo">
+                </div>
+                <span class="ml-2 mt-1 bold">DevelopND</span>
+            </a>
+            <ul class="list-unstyled components">
+                <li class="mt-4 current">
+                    <a href="dashboard-home.html"><i class="fa fas mr-3 fa-dashboard"></i>Dashboard</a>
+                </li>
+                <li class="mt-4">
+                    <a href="admin-projects.html"><i class="fa fas mr-3 fa-cubes"></i>Projects</a>
+                </li>
+               
+                <li class="mt-4">
+                    <a href="admin-users.html"><i class="fa fas mr-3 fa-user"></i>Users</a>
+                </li>
+                <li class="mt-4">
+                    <a href="reports.html"><i class="fa fas mr-3 fa-book"></i>Reports</a>
+                </li>
+                <li class="mt-4">
+                    <a href="text-messages.html"><i class="fa fas mr-3 fa-envelope"></i>Text Messages</a>
+                </li>
+                <li id="sidebar-logout" class="mt-4" onclick="sidebarLogoutFunc()">
+                    <span style="color: red"><i class="fa fas mr-3 ml-4 fa-sign-out" style="color:red"></i>Logout</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <nav class="navbar navbar-expand-lg navbar-dark our-nav col-12">
+
+                        <button style="float: right;" class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto nav-utilities">
+                                <!-- <li class="nav-item mx-3 mt-2">
+                                    <a class="nav-link" href="#">Categories</a>
+                                </li> -->
+                                <li class="nav-item mx-3 mt-2 px-2 custom-nav-li">
+                                    <a class="nav-link" style="cursor: pointer; margin: 0;"
+                                        onclick="location.href=`${window.location.origin}/project/search-results.html`">Search</a>
+                                </li>
+                                <div class="dropdown mt-2 mx-1" id="notification-tab">
+                                    <i class="fa fas fa-bell mr-3 mt-2 dropdown-icon" id="notificationsDropdown"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                    <span class="badge" data-toggle="dropdown" data-real-time-count></span>
+                                    <div class="dropdown-menu action-dropdown border"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                            <span class="col-6" data-notification-unread-count>3 unread
+                                                notifications</span>
+                                            <span class="col-6 text-right mark-as-read" data-mark-as-read>Mark all as
+                                                read</span>
+                                        </div>
+                                        <div class="col-12 px-0 dropdown-body scroller" data-notification-DOM>
+                                            <span class="spinner-border spinner-border-sm mx-0" style=" float: center;"
+                                                role="status">
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="dropdown mt-2 mx-1">
+                                    <i class="fa fas fa-envelope mr-3 mt-2 dropdown-icon" id="messagesDropdown"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                    <span class="badge">1</span>
+                                    <div class="dropdown-menu action-dropdown border"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                            <span class="col-6">3 messages</span>
+                                            <span class="col-6 text-right mark-as-read">Mark all as read</span>
+                                        </div>
+                                        <div class="col-12 px-0 dropdown-body scroller">
+                                            <div class="col-12 indiv-info row mx-0">
+                                                <div class="info-actual-con col-12" data-toggle="modal"
+                                                    data-target="#viewMessageModal">
+                                                    <p class="info-words mb-0 mt-2">New broadcast message</p>
+                                                    <span class="info-time">12 min ago</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <li class="nav-item dropdown" data-user-drop-box>
+                                    <a class="nav-link" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="nav-user row mx-0">
+                                            <div class="col-10 col-md-8 px-0 pl-2 mt-2 text-right data-user-name">
+                                                <span class="" id="nav-name" data-user-name>...</span>
+                                            </div>
+                                            <div class="col-2 col-md-4 px-0">
+                                                <div class="nav-image mr-auto mx-3 border">
+                                                    <img class="" id="nav-user-image" data-user-image
+                                                        src="../../images/noimage.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- dashboard.html -->
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a id="user-or-reviewer" class="dropdown-item" href="dashboard-home.html">Dashboard</a>
+                                        <a class="dropdown-item" href="../user/profile-settings.html">Settings</a>
+                                        <a class="dropdown-item" href="#">Help</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="col-12 table-page-full row mx-0">
+                        <button type="button" id="sidebarCollapse" class="btn sidebar-btn p-1 mt-2 ml-2">
+                            <i class="fas fa fa-align-left"></i>
+                        </button>
+                        <div class="col-12 col-md-9 px-1">
+                            <div class="col-12 table-con mt-4">
+                                <p class="main-count mb-0"><span id="total-project-value"></span> Projects</p>
+                                <div class="col-12 filter-table border my-2">
+                                    <select id="project-status-select" class="filter-select mt-3" name="" id="">
+                                        <option id="status-tab" value="null">Status
+                                        </option>
+                                        <option id="not-started-tab" value="Not-Started">Not Started</option>
+                                        <option id="in-progress-tab" value="In-Progress">In Progress</option>
+                                        <option id="completed-tab" value="Completed">Completed</option>
+                                        <!-- <option id="due-to-start-tab" value="Due-To-Start">Due To Start</option> -->
+                                        <option id="abandoned-tab" value="Abandoned">Abandoned</option>
+                                    </select>
+                                    <select id="project-state-select" class="filter-select mt-3" name="" id="">
+                                        <option id="state-tab" value="null">State</option>
+                                        <option value="ABIA">ABIA</option>
+                                        <option value="AKWA IBOM">AKWA IBOM</option>
+                                        <option value="BAYELSA">BAYELSA</option>
+                                        <option value="CROSS RIVER">CROSS RIVER</option>
+                                        <option value="DELTA">DELTA</option>
+                                        <option value="EDO">EDO</option>
+                                        <option value="IMO">IMO</option>
+                                        <option value="ONDO">ONDO</option>
+                                        <option value="RIVERS">RIVERS</option>
+                                    </select>
+                                    <select id="project-category-select" class="filter-select mt-3" name="" id="">
+                                        <option id="categories-tab" value="null">Categories</option>
+                                        <option value="Agric_Fisheries">Agric/Fisheries</option>
+                                        <option value="Canalization_Reclamation">Canalization/Reclamation</option>
+                                        <option value="Community_RuralDevelopment">Community/Rural Development</option>
+                                        <option value="Ecological">Ecological</option>
+                                        <option value="Education">Education</option>
+                                        <option value="Energy_PowerSupply">Energy/Power Supply</option>
+                                        <option value="ICT">ICT</option>
+                                        <option value="IndustrialandEnterpriseDevelopment">Industrial and Enterprise Development</option>
+                                        <option value="PlanningResearchStatisticsMgtInfor">Planning, Research Statistics & Mgt. Infor.</option>
+                                        <option value="ProjectsAdmin_Others">Projects Admin/Others</option>
+                                        <option value="SecurityAdmin">Security Admin</option>
+                                        <option value="Health">Health</option>
+                                        <option value="Jetty_ShoreProtection">JettyShoreProtection</option>
+                                        <option value="Roads_Bridges">Roads/Bridges</option>
+                                        <option value="YouthsSportsandWomenEmpowerment">Youths Sports and Women Empowerment</option>
+                                        <option value="GovernanceSocialServices">Governance and Social Services</option>
+                                        <option value="WaterSupply">Water Supply</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 scroller px-0" style="max-height: 80vh;">
+                                    <div class="col-12 px-0" style="height: 80vh;">
+                                        <table class="table table-bordered dashboard-table col-12 px-0">
+                                            <thead>
+                                                <tr>
+                                                    <!-- <th scope="col">#</th> -->
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Project Title</th>
+                                                    <th scope="col">Location</th>
+                                                    <th scope="col">Category</th>
+                                                    <th scope="col">Contractor</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Views</th>
+                                                    <!-- <th scope="col">Action</th> -->
+                                                </tr>
+                                            </thead>
+                                            <tbody id="projects-table" class="scroller">
+                                                <div class="col-1 spinner-con" id="spinner-users">
+                                                    <div class="spinner-border mt-3" role="status">
+                                                        <span class="sr-only">loading...</span>
+                                                    </div>
+                                                </div>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search-pagination col-12 px-0 scroller">
+                                <div class="col-12 px-0">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination">
+                                            <li id="first-page-button" class="page-item" onclick="showFirstPage()">
+                                                <a class="page-link" href="#" aria-label="First">
+                                                    <i class="fas fa fa-step-backward fa-xs"></i>
+                                                </a>
+                                            </li>
+                                            <li id="prev-page-button" class="page-item" onclick="showPrevPage()">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <i class="fas fa fa-less-than fa-xs"></i>
+                                                </a>
+                                            </li>
+                                            <ul class="list-group-horizontal list-group" id="available-pages">
+                                                <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                            </ul>
+                                            <li id="next-page-button" class="page-item" onclick="showNextPage()">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <i class="fas fa fa-greater-than fa-xs"></i>
+                                                </a>
+                                            </li>
+                                            <li id="last-page-button" class="page-item" onclick="showLastPage()">
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                    <i class="fas fa fa-step-forward fa-xs"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3 px-1">
+                            <div class="col-12 border mt-4 add-project-con scroller">
+                                <p class="grey font-12px bold mt-3">Add project</p>
+                                <button class="btn btn-brand" id="import-project" style="font-size: 10px;">Upload
+                                    Excel</button>
+                                <p class="grey font-12px bold mt-3">or</p>
+                                <form id="create-project-form" class="col-11 mx-auto mb-3 new-project-form px-0">
+                                    <p class="my-4">
+                                        <span>Add Manually</span>
+                                    </p>
+                                    <div class="form-group mb-1">
+                                        <label for="project_type">Project Type</label>
+                                        <select id="project_type" name="project_type" class="custom-select" required>
+                                            <option selected>Select a project type</option>
+                                            <option value="agriculture">Agriculture</option>
+                                            <option value="agriculture">Ecological</option>
+                                            <option value="agriculture">Education</option>
+                                            <option value="agriculture">Energy / Power Supply</option>
+                                            <option value="agriculture">Canalisation / Reclamation</option>
+                                            <option value="agriculture">Road / Bridges</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="project_description">Project Description</label>
+                                        <textarea type="text" id="project_description" name="project_description"
+                                            class="form-control" required></textarea>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="project_owner">Project Owner</label>
+                                        <input type="text" id="project_owner" name="project_owner" class="form-control"
+                                            required>
+                                    </div>
+                                    <div class="col-12 mx-0 px-0 row">
+                                        <div class="form-group col-12 col-md ml-0 mr-1 px-0 mb-1">
+                                            <label for="location">Location</label>
+                                            <input type="text" id="location" name="location" class="form-control"
+                                                required>
+                                        </div>
+                                        <div class="form-group col-12 col-md ml-1 mr-0 px-0 mb-1">
+                                            <label for="lga">LGA</label>
+                                            <input type="text" id="lga" name="LGA" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mx-0 px-0 row">
+                                        <div class="form-group col-12 col-md ml-0 mr-1 px-0 mb-1">
+                                            <label for="state">State</label>
+                                            <select id="state" name="state" class="custom-select" required>
+                                                <option selected>Select your state</option>
+                                                <option value="abia">Akwa Ibom</option>
+                                                <option value="akwa-ibom">Akwa Ibom</option>
+                                                <option value="bayelsa">Bayelsa</option>
+                                                <option value="cross-river">Cross River</option>
+                                                <option value="delta">Delta</option>
+                                                <option value="edo">Edo</option>
+                                                <option value="imo">Imo</option>
+                                                <option value="ondo">Ondo</option>
+                                                <option value="rivers">Rivers</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-12 col-md ml-1 mr-0 px-0 mb-1">
+                                            <label for="status">Status</label>
+                                            <select id="status" name="status" class="custom-select" required>
+                                                <option selected>Choose the status</option>
+                                                <option value="Not-Started">Not Started</option>
+                                                <option value="In-Progress">In Progress</option>
+                                                <option value="Completed">Completed</option>
+                                                <option value="Abandoned">Abandoned</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 row mx-0 px-0 row">
+                                        <div class="form-group col-12 col-md px-0 ml-0 mr-1 mb-1">
+                                            <label for="budget_cost">Budget</label>
+                                            <input type="number" id="budget_cost" name="budget_cost"
+                                                class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-12 col-md px-0 ml-1 mr-0 mb-1">
+                                            <label for="commitment">Commitment</label>
+                                            <input type="number" id="commitment" name="commitment" class="form-control"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mx-0 px-0 row">
+                                        <div class="form-group col-12 col-md px-0 ml-0 mr-1 mb-1">
+                                            <label for="start_date">Start Date</label>
+                                            <input type="date" id="start_date" name="start_date" class="form-control"
+                                                required>
+                                        </div>
+                                        <div class="form-group col-12 col-md px-0 ml-1 mr-0 mb-1">
+                                            <label for="due_date">End Date</label>
+                                            <input type="date" id="due_date" name="due_date" class="form-control"
+                                                required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-1 row mx-0">
+                                        <label class="col-12 px-0" for="approved_first_year">Approved Amounts</label>
+                                        <input type="number" id="approved_first_amount" name="approved_first_amount"
+                                            placeholder="" class="form-control col mr-1" required>
+                                        <input type="number" id="approved_second_amount" name="approved_second_amount"
+                                            placeholder="" class="form-control col ml-1" required>
+                                        <small class="col-12 px-0" style="font-size: 10px;">Please only insert last two
+                                            allocted years amount</small>
+                                    </div>
+                                    <div class="form-group mb-1 row mx-0">
+                                        <label class="col-12 px-0" for="approved_first_year">Approved years</label>
+                                        <input type="number" id="approved_first_year" name="approved_first_year"
+                                            placeholder="" class="form-control yearpicker col mr-1" required>
+                                        <input type="number" id="approved_second_year" name="approved_second_year"
+                                            placeholder="" class="form-control yearpicker col ml-1" required>
+                                        <small class="col-12 px-0" style="font-size: 10px;">Please only insert last two
+                                            allocated years</small>
+                                    </div>
+
+                                    <!-- <div class="form-group mb-1">
+                                        <label for="approved_second_year">Approved second year</label>
+                                        <input type="number" id="approved_second_year" name="approved_second_year" placeholder="[eg: 2017]" class="form-control yearpicker" required>
+                                    </div> -->
+                                    <button type="submit" id="submit-btn" class="btn btn-brand my-3 font-12px"> CREATE
+                                        PROJECT
+                                        <!-- <div class="spinner-border spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div> -->
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../js/general/third_party_cdn.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="../../js/manipulation/userData.js"></script>
+<script src="../../js/general/global.js"></script>
+<script src="js/importProjectRedirect.js"></script>
+<script src="../../js/websocket_event/WebNotificationClass.js"></script>
+<script src="../../js/websocket_event/webNotification.js"></script>
+<script src="js/projectFilter.js"></script>
+<script src="js/fetchprojects.js"></script>
+<script src="js/getstats.js"></script>
+<script src="js/createProject.js"></script>
+<script src="js/table-pagination.js"></script>
+<script src="../../package/Year-Picker-Text-Input/yearpicker.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+            $("#sidebar").toggleClass("active");
+        });
+    });
+</script>
+<script>
+    $('.yearpicker').yearpicker();
+
+    $('#sheet').on('change', function () {
+        //get the file name
+        var fileName = $(this).val();
+        var cleanFileName = fileName.replace('C:\\fakepath\\', " ");
+        //replace the "Choose a file" label
+        $(this).next('.custom-file-label').html(cleanFileName);
+    });
+</script>
+
+</html>

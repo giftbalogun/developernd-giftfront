@@ -1,0 +1,127 @@
+.settings-con {
+  background: #F7F7F7;
+}
+
+.settings-con .setting-label {
+  font-size: 12px;
+}
+
+.settings-con label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #0b273d;
+}
+
+.settings-con input {
+  border-radius: 0px;
+  font-size: 12px;
+}
+
+.settings-con textarea {
+  border-radius: 0px;
+  font-size: 12px;
+  height: 13vh;
+}
+
+.settings-con select {
+  border-radius: 0px;
+  font-size: 12px;
+}
+
+.settings-con select option {
+  color: grey;
+}
+
+.settings-con select option.fake-placeholder {
+  color: grey;
+}
+
+.settings-con .label-ast {
+  color: red;
+}
+
+.settings-con .personal-settings {
+  max-height: 115vh;
+  background: white;
+}
+
+@media (max-width: 768px) {
+  .settings-con .personal-settings {
+    margin-left: 0px;
+  }
+}
+
+.settings-con .change-password {
+  background: white;
+}
+
+@media (max-width: 768px) {
+  .settings-con .change-password {
+    margin-left: 0px;
+  }
+}
+
+.settings-con .email-notifs {
+  min-height: 40vh;
+  background: white;
+}
+
+@media (max-width: 768px) {
+  .settings-con .email-notifs {
+    margin-left: 0px;
+  }
+}
+
+.settings-con .email-notifs input {
+  cursor: pointer;
+}
+
+.settings-con .delete-account {
+  background: white;
+}
+
+@media (max-width: 768px) {
+  .settings-con .delete-account {
+    margin-left: 0px;
+  }
+}
+
+.settings-con .profile-listed {
+  min-height: 100vh;
+  background: #0b273d;
+  border-radius: 5px;
+}
+
+.settings-con .profile-listed .profile-listed-inner .profile-listed-image {
+  height: 40vh;
+  width: 40vh;
+  border-radius: 5px;
+  color: rgba(11, 39, 61, 0.7);
+}
+
+.settings-con .profile-listed .profile-listed-inner .profile-listed-image img {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.settings-con .profile-listed .profile-listed-inner .profile-listed-name #name-listed {
+  font-weight: bold;
+  color: white;
+}
+
+.settings-con .profile-listed .profile-listed-inner .profile-info-template .info-icon {
+  color: white;
+}
+
+.settings-con .profile-listed .profile-listed-inner .profile-info-template .info-name {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.settings-con .profile-listed .profile-listed-inner .profile-info-template .info-value {
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+/*# sourceMappingURL=profile-settings.css.map */

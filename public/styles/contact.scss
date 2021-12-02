@@ -1,0 +1,65 @@
+@import "media-queries";
+
+.contact-full {
+    min-height: 600px;
+    background: #F5F7FA;
+    border: 1px solid transparent;
+    .contact-us-con {
+        background: white;
+        span {
+            color: #0b273d;
+            border: 1px solid transparent;
+            border-bottom: 1px solid #0b273dab;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 2;
+            @include small-screens {
+                font-size: 14px;
+              }
+        }
+        a {
+            background: #0b273d;
+            color: white;
+            padding: 7px 10px;
+            border-radius: 50%;
+            img {
+                height: 15px;
+            }
+        }
+        .sdn-link {
+            padding: 0px;
+            border-radius: 50%;
+            img {
+                height: 35px;
+            }
+        }
+    }
+    .contact-form-con {
+        background: white;
+        span {
+            color: #0b273d;
+            border: 1px solid transparent;
+            border-bottom: 2px solid #0b273d;
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        label {
+            color: #0b273d;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        input, textarea, select {
+            border: none;
+            border-bottom: 2px solid #0b273d;
+            font-size: 14px;
+            border-radius: 0px;
+            font-weight: bold;
+            &:focus, &:active {
+                outline: none;
+                box-shadow: none;
+            }
+        }        
+    }
+}

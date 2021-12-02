@@ -1,0 +1,175 @@
+@import "media-queries";
+
+@mixin explore-by-image($bg) {
+    min-height: 165.75px;
+    background: $bg;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body {
+    background: rgba(247, 247, 247, 1);
+}
+
+.landing-full {
+//    min-height: 100vh;
+
+    .landing-welcome {
+        .welcome-bg {
+            min-height: 397.8px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(rgba(11, 39, 61, 0.7), rgba(11, 39, 61, 0.8)), url("https://res.cloudinary.com/getfiledata/image/upload/v1582691216/DevelopND/Default/welcome-bg.png");
+            background-position: center;
+            background-size: cover;
+            @include small-screens {
+                min-height: 90vh;
+            }
+        }
+
+        .welcome-words {
+            color: white;
+        }
+
+        .explore-projects {
+            .explore-by {
+                min-height: 232.05px;
+                color: grey;
+                .by-sector-image {
+                    @include explore-by-image(url("https://res.cloudinary.com/getfiledata/image/upload/v1582691216/DevelopND/Default/crane-building.png"));
+                }
+                .by-location-image {
+                    @include explore-by-image(url("https://res.cloudinary.com/getfiledata/image/upload/v1582691216/DevelopND/Default/NigerDeltaMap.svg"));
+                    background-color: #0B273D;
+                    background-size: 80%;
+                }
+                .by-organization-image {
+                    @include explore-by-image(url("https://res.cloudinary.com/getfiledata/image/upload/v1582691216/DevelopND/Default/three-buildings.png"));
+                }
+                .explore-words {
+                    min-height: 66.3px;
+                    background: white;
+
+                    span {
+                        font-size: 12px;
+                    }
+
+                    p {
+                        font-size: 18px;
+                    }
+                }
+            }
+
+        }
+    }
+    .some-text-1 {
+        p {
+            color: grey;
+        }
+    }
+    .some-video-con {
+        min-height: 265.2px;
+        background: #0B273D;
+        .video-con {
+            height:265.2px;
+            div {
+                height: 265.2px;
+                video {
+                    background: black;
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 5px;
+                    // height: 35vh;
+      
+                    // @include small-screens {
+                    //   height: 20vh;
+                    // }
+                  }
+            }
+            // border-radius: 10px 0px 0px 10px;
+            // background: url("../images/welcome-bg.png");
+            // background-position: center;
+            // background-size: cover;
+            // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            &:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+            // .video-overlay {
+            //     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+            //     cursor: pointer;
+            //     .play-overlay {
+            //         height: 10vh;
+            //         width: 10vh;
+            //         border-radius: 50%;
+            //         border: 1px solid #BCE0FD;
+            //         i {
+            //             color: rgb(115, 115, 236);
+            //         }
+            //     }
+            // }
+        }
+        .text-con{
+            color: white;
+            p {
+                font-size: 20px;
+                font-style: italic;
+            }
+            .company {
+                font-size: 12px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+.subscribe {
+    .twitter-feed {
+        height: 265.2px;
+        overflow-y: scroll;
+        // border-radius: 10px 0px 0px 10px;
+        .twitter-timeline {
+            height: 100%;
+            width: 100%;
+        }
+    }
+    .newsletter-subscribe {
+        // border-radius: 0px 10px 10px 0px;
+        background: #54D0ED;
+        color: white;
+        @include small-screens {
+            padding: 10px !important;
+        }
+        p {
+            font-size: 14px;
+            font-style: italic;
+        }
+        .social-links {
+            .link-con{
+                background: #0B273D;
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                img {
+                    height: 60%;
+                    width: 100%;
+                  //  margin-left: 10px;
+                }
+            }
+            .sdn-link-con{
+                background: #0B273D;
+                height: 30px;
+                width: 30px;
+              
+                img {
+                    height: 100%;
+                    width: 100%;
+                    
+                  //  margin-left: 10px;
+                }
+            }
+        }
+    }
+}
+

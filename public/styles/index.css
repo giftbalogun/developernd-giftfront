@@ -1,0 +1,162 @@
+body {
+  background: #f7f7f7;
+}
+
+.landing-full .landing-welcome .welcome-bg {
+  min-height: 397.8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(11, 39, 61, 0.7)), to(rgba(11, 39, 61, 0.8))), url("https://res.cloudinary.com/getfiledata/image/upload/v1582691216/DevelopND/Default/welcome-bg.png");
+  background: linear-gradient(rgba(11, 39, 61, 0.7), rgba(11, 39, 61, 0.8)), url("https://res.cloudinary.com/getfiledata/image/upload/v1582691216/DevelopND/Default/welcome-bg.png");
+  background-position: center;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  .landing-full .landing-welcome .welcome-bg {
+    min-height: 90vh;
+  }
+}
+
+.landing-full .landing-welcome .welcome-words {
+  color: white;
+}
+
+.landing-full .landing-welcome .explore-projects .explore-by {
+  min-height: 232.05px;
+  color: grey;
+}
+
+.landing-full .landing-welcome .explore-projects .explore-by .by-sector-image {
+  min-height: 165.75px;
+  background: url("https://res.cloudinary.com/getfiledata/image/upload/v1582691216/DevelopND/Default/crane-building.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.landing-full .landing-welcome .explore-projects .explore-by .by-location-image {
+  min-height: 165.75px;
+  background: url("https://res.cloudinary.com/getfiledata/image/upload/v1582691216/DevelopND/Default/NigerDeltaMap.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #0B273D;
+  background-size: 80%;
+}
+
+.landing-full .landing-welcome .explore-projects .explore-by .by-organization-image {
+  min-height: 165.75px;
+  background: url("https://res.cloudinary.com/getfiledata/image/upload/v1582691216/DevelopND/Default/three-buildings.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.landing-full .landing-welcome .explore-projects .explore-by .explore-words {
+  min-height: 66.3px;
+  background: white;
+}
+
+.landing-full .landing-welcome .explore-projects .explore-by .explore-words span {
+  font-size: 12px;
+}
+
+.landing-full .landing-welcome .explore-projects .explore-by .explore-words p {
+  font-size: 18px;
+}
+
+.landing-full .some-text-1 p {
+  color: grey;
+}
+
+.landing-full .some-video-con {
+  min-height: 265.2px;
+  background: #0B273D;
+}
+
+.landing-full .some-video-con .video-con {
+  height: 265.2px;
+}
+
+.landing-full .some-video-con .video-con div {
+  height: 265.2px;
+}
+
+.landing-full .some-video-con .video-con div video {
+  background: black;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.landing-full .some-video-con .video-con:hover {
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.landing-full .some-video-con .text-con {
+  color: white;
+}
+
+.landing-full .some-video-con .text-con p {
+  font-size: 20px;
+  font-style: italic;
+}
+
+.landing-full .some-video-con .text-con .company {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.subscribe .twitter-feed {
+  height: 265.2px;
+  overflow-y: scroll;
+}
+
+.subscribe .twitter-feed .twitter-timeline {
+  height: 100%;
+  width: 100%;
+}
+
+.subscribe .newsletter-subscribe {
+  background: #54D0ED;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .subscribe .newsletter-subscribe {
+    padding: 10px !important;
+  }
+}
+
+.subscribe .newsletter-subscribe p {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.subscribe .newsletter-subscribe .social-links .link-con {
+  background: #0B273D;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.subscribe .newsletter-subscribe .social-links .link-con img {
+  height: 60%;
+  width: 100%;
+}
+
+.subscribe .newsletter-subscribe .social-links .sdn-link-con {
+  background: #0B273D;
+  height: 30px;
+  width: 30px;
+}
+
+.subscribe .newsletter-subscribe .social-links .sdn-link-con img {
+  height: 100%;
+  width: 100%;
+}
+/*# sourceMappingURL=index.css.map */

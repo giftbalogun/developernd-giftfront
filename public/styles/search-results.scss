@@ -1,0 +1,91 @@
+@import "../styles/media-queries";
+
+.search-results-head {
+    min-height: 7vh;
+    background: rgba(11, 39, 61, 0.7);
+    display: none;
+
+    h6 {
+        color: white;
+        @include small-screens {
+            margin-left: 0px !important;
+        }
+    }
+}
+
+.search-pagination {
+    .page-link {
+        border: none;
+        color: #0b273d;
+        font-size: 15px;
+        font-weight: bold;
+
+        &.active {
+            color: black;
+        }
+    }
+}
+
+.search-results-con {
+    min-height: 250vh;
+    @include small-screens {
+        padding: 10px;
+        min-height: 10vh;
+    }
+    .sidebar-btn {
+        border-radius: 50%;
+        height: 6vh;
+        width: 6vh;
+        background: rgb(11, 39, 61);
+        color: #fff;
+        @include large-screens {
+            display: none;
+        }
+    }
+    
+    .sidebar-btn i {
+        font-size: 14px;
+    }
+    .filter-section {
+        max-height: 250vh;
+        @include small-screens {
+            padding: 0px;
+        }
+
+        label {
+            font-size: 12px;
+            color: #0b273d;
+            font-weight: bold;
+        }
+
+        .now-showing {
+            height: 8vh;
+        }
+    }
+
+    .projects-section {
+        max-height: 250vh;
+        @include small-screens {
+            padding: 0px;
+        }
+
+        .projects-listed {
+            max-height: 250vh;
+            
+            @include small-screens {
+                padding: 0px;
+            }
+        }
+    }
+}
+.panel-wrapper {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+}
+.view-project {
+    color: blue;
+    padding: 10px;
+    border-bottom: 2px solid blue; 
+    font-weight:bold;
+}

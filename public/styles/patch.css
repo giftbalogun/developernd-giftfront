@@ -1,0 +1,84 @@
+
+/* Search Project Style */
+
+.view-project-style{
+
+    color: white;
+    padding: 5px 5px 5px 5px;
+   	background: #0b273d;
+    font-weight:bold;
+    border-radius: 3px;
+}
+.view-project-style:hover{
+    color: #0b273d;
+    background: white;
+    border: 1px solid #0b273d;
+}
+.view-project-style:active{
+    color: white;
+    background: grey;
+
+}
+
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+  border: 0px;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  position: absolute; 
+  display: none;
+  background: white;
+  z-index: 9999999;
+  height: 250px;
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  font-weight: bold;
+  border-bottom: 1px solid #e6e6e6;
+}
+#checkboxes label {
+  display: block;
+  color: black;
+  font-size: 8px !important;
+  margin-bottom: 0px !important;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+#checkboxes input {
+	margin: 3px;
+}
+
+.location-lga-community {
+  display: none;
+}
+/*Global.css style */
+ .font-10px {
+      font-size: 10px;
+   }
+.view-proj-btn {
+    background: #192965; 
+    color: white;
+    font-weight: 400;
+}
+.view-proj-btn:hover{
+    background-color: white;
+    color: #192965;
+    border: 1px solid #192965;
+}

@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>404 | DevelopND</title>
+<link rel="icon" href="images/developnd-logo.png" type="image/png" sizes="16x16">
+
+<link href="https://fonts.googleapis.com/css?family=Montserrat:700,900" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+  * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#notfound {
+  position: relative;
+  height: 100vh;
+  background:  #030005; 
+}
+
+#notfound .notfound {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.notfound {
+  max-width: 767px;
+  width: 100%;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.notfound .notfound-404 {
+  position: relative;
+  height: 180px;
+  margin-bottom: 20px;
+  z-index: -1;
+}
+
+.notfound .notfound-404 h1 {
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50% , -50%);
+      -ms-transform: translate(-50% , -50%);
+          transform: translate(-50% , -50%);
+  font-size: 224px;
+  font-weight: 900;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: -12px;
+  color: #0B273D;
+  text-transform: uppercase;
+  text-shadow: -1px -1px 0px #8400ff, 1px 1px 0px #ff005a/* #ff005a */;
+  letter-spacing: -20px;
+}
+
+
+.notfound .notfound-404 h2 {
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 110px;
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0px 2px 0px #8400ff;
+  letter-spacing: 13px;
+  margin: 0;
+}
+
+.notfound span {
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  text-transform: uppercase;
+  color: #ff005a;  /*#ff005a;*/
+  text-decoration: none;
+  border: 2px solid;
+  background: transparent;
+  padding: 10px 40px;
+  font-size: 14px;
+  font-weight: 700;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  cursor: pointer;
+}
+
+.notfound span:hover {
+  color: #8400ff;
+}
+
+@media only screen and (max-width: 767px) {
+    .notfound .notfound-404 h2 {
+        font-size: 24px;
+        
+    }
+    .notfound span {
+      padding: 5px 20px;
+      font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+  .notfound .notfound-404 h1 {
+      font-size: 182px;
+  }
+}
+</style>
+</head>
+<body>
+<div id="notfound">
+<div class="notfound">
+<div class="notfound-404">
+<h1>404</h1>
+<h2>Page not found</h2>
+</div>
+<span onclick="location.href=window.origin">Home</span>
+<span onclick="location.href=`${window.origin}/login.html`">Login</span>
+<span onclick="location.href=`${window.origin}/help.html`">Help</span><br><br>
+<div class="col-12 search-more-con px-0">
+  <div class="search-more col-12 col-md-11 mx-auto mt-2">
+      <div class="special-input mb-3 col-12 col-md-12 mx-auto row mx-0 px-2">
+          <input id="search_value" style="border-radius: 2px; font-weight: 2000px;" type="text"
+              class="form-control col-12 col-md-9 my-1"
+              placeholder="Search projects e.g. location, sector, organization or keyword" autofocus>
+          <button style="background: #0b273d; color: white; font-weight: bold;" class="btn btn-brand col-12 col-md-3 my-1" id="project_search">Search</button>
+      </div>
+  </div>
+</div>
+</div>
+
+</div>
+<script src="js/general/searchRedirect.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="c52ed7cd6d1cfb8d05d1c2b7-text/javascript"></script>
+<script type="c52ed7cd6d1cfb8d05d1c2b7-text/javascript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+  crossorigin="anonymous"></script>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="c52ed7cd6d1cfb8d05d1c2b7-|49" defer=""></script></body>
+</html>
+

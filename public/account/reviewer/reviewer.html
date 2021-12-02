@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title data-title>Reviewer | DevelopND</title>
+    <link rel="icon" href="../../images/developnd-logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/index.css">
+    <link rel="stylesheet" href="../../styles/dashboard.css">
+    <script src="../../js/general/routes.js"></script>
+    <script src=" ../../js/general/placeholder.js"> </script>
+    <script src="../../js/general/onSession.js"></script>
+</head>
+
+<body class="roboto scroller">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-dark our-nav col-12">
+                <a class="navbar-brand" style="cursor: pointer;" onclick="location.href=`${window.location.origin}`">
+                    <div class="logo-replace">
+                        <img src="../../images/developnd-logo.png" alt="logo">
+                    </div>
+                    <span class="ml-2 mt-1 bold">DevelopND</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto nav-utilities">
+                        <li class="nav-item mt-2 custom-nav-li">
+                            <a class="nav-link custom-nav-link" href="../../index.html">Home</a>
+                        </li>
+                        <li class="nav-item mx-3 mt-2 ml-auto" id="nav-sign-in">
+                            <a class="nav-link" href="../login.html">Sign In</a>
+                        </li>
+                        <script>
+                            if (localStorage.getItem('token')) {
+                                document.querySelector('#nav-sign-in').style.display = 'none';
+                            }
+                        </script>
+
+                        <li class="nav-item mx-3 mt-2 ml-auto">
+                            <a class="nav-link" style="cursor: pointer;"
+                                onclick="location.href=`${window.location.origin}/project/search-results.html`">Search</a>
+                        </li>
+                        <div class="dropdown mt-2 mx-3 ml-auto track-login-user" id="notification-tab">
+                            <i class="fa fas fa-bell mr-3 mt-2 dropdown-icon" id="notificationsDropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                            <span class="badge" data-toggle="dropdown" data-real-time-count></span>
+                            <div class="dropdown-menu action-dropdown border" aria-labelledby="dropdownMenuButton">
+                                <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                    <span class="col-6" data-notification-unread-count>3 unread notifications</span>
+                                    <span class="col-6 text-right mark-as-read" data-mark-as-read>Mark all as
+                                        read</span>
+                                </div>
+                                <div class="col-12 px-0 dropdown-body scroller" data-notification-DOM>
+                                    <span class="spinner-border spinner-border-sm mx-0" style=" float: center;"
+                                        role="status">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="dropdown mt-2 mx-3 track-login-user" id="adminNotify">
+                                <i class="fa fas fa-envelope mr-3 mt-2 dropdown-icon" id="messagesDropdown"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                <span class="badge">1</span>
+                                <div class="dropdown-menu action-dropdown border" aria-labelledby="dropdownMenuButton">
+                                    <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                        <span class="col-6">5 messages</span>
+                                        <span class="col-6 text-right mark-as-read">Mark all as read</span>
+                                    </div>
+                                    <div class="col-12 px-0 dropdown-body scroller">
+                                        <div class="col-12 indiv-info row mx-0">
+                                            <div class="info-actual-con col-10" data-toggle="modal"
+                                                data-target="#viewMessageModal">
+                                                <p class="info-words mb-0 mt-2">New broadcast message</p>
+                                                <span class="info-time">12 min ago</span>
+                                            </div>
+                                            <div class="col-2 px-2 info-img-con">
+                                                <div class="info-img border mt-1">
+                                                    <i class="fa fas fa-check ml-1"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        <li class="nav-item dropdown track-login-user" data-user-drop-box>
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <div class="nav-user row mx-0">
+                                    <div class="col-10 col-md-8 px-0 pl-2 data-user-name"
+                                        style="text-align: right !important;">
+                                        <span class="" data-user-name id="nav-name">loading...</span>
+                                    </div>
+                                    <div class="col-2 col-md-4 px-0">
+                                        <div class="nav-image mr-auto mx-3 border">
+                                            <img class="" data-user-image src="../../images/noimage.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="reviewer.html">Dashboard</a>
+                                <a class="dropdown-item" href="../user/profile-settings.html">Settings</a>
+                                <a class="dropdown-item" href="#">Help</a>
+                                <a class="dropdown-item" style="cursor:pointer;" data-logout>Log Out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="user-details col-12 row mx-0">
+                <div class="col-12 col-md-5">
+                    <div class="col-12 col-md-8 row mx-0 mt-4 mx-auto image-name-location">
+                        <div class="col-12 col-md-4 px-0">
+                            <div class="image-con mx-auto">
+                                <img class="" id="user-image" src="../../images/noimage.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8 text-center data-con">
+                            <p class="bold that-blue mb-0 pb-0" id="data-con-name">Loading...</p>
+                            <span class="that-blue-filtered" id="data-con-city">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5  ml-auto shared-saved-data row mx-0">
+                    <div class="col-12 col-md text-center mb-3">
+                        <p class="that-blue reviewer-stats mb-0 mt-4">
+                            <span class="spinner-border spinner-border-sm mx-0" data-review-count-spinner role="status">
+                            </span>
+                        </p>
+                        <span class="that-blue-filtered">Reviewed Projects</span>
+                    </div>
+                    <div class="col-12 col-md text-center mb-3">
+                        <p class="assignment-stat that-blue mb-0 mt-4">
+                            <span class="spinner-border spinner-border-sm mx-0" data-assign-count-spinner role="status">
+                            </span>
+                        </p>
+                        <span class="that-blue-filtered">Assignments</span>
+                    </div>
+                    <div class="col-12 col-md saved-stats text-center mb-3">
+                        <p id="savedProjectCount" class="that-blue mb-0 mt-4">
+                            <span class="spinner-border spinner-border-sm mx-0" data-save-count-spinner role="status">
+                            </span>
+                        </p>
+                        <span class="that-blue-filtered">Saved Projects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="shared-saved-listed col-12 p-0 pb-5 bg-white">
+                <ul class="nav nav-pills flex-column flex-sm-row m-0 p-4" style="background: #F7F7F7;" id="pills-tab"
+                    role="tablist">
+                    <li class="nav-item text-center">
+                        <a class="nav-link active" id="reviews-tab" data-toggle="pill" href="#reviews" role="tab"
+                            aria-controls="reviews" aria-selected="false">My Reviews</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" id="assignments-tab" data-toggle="pill" href="#assignments" role="tab"
+                            aria-controls="assignments" aria-selected="false">My Assignments</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link" id="saved-projects-tab" data-toggle="pill" href="#saved-projects" role="tab"
+                            aria-controls="saved-projects" aria-selected="true">Saved Projects</a>
+                    </li>
+                    <li class="nav-item ml-auto col-12 col-lg-5">
+                        <div class="special-input pb-2 mb-3 col-12 mx-auto row mx-0"
+                            style="border-bottom:2px solid #0b273d; background:inherit;">
+                            <input id="search_value" style="border-radius: 0px; background:inherit;" type="text"
+                                class="form-control col-12 col-md-9 mt-2"
+                                placeholder="Search projects e.g. location, sector, organization or keyword" autofocus>
+                            <button class="btn btn-brand col-12 col-md-3 mt-2 px-0" id="project_search"
+                                style="font-weight: 300;">Search</button>
+                        </div>
+                    </li>
+                </ul>
+                <div class="bg-white col-12 px-lg-5 py-lg-2 p-0 m-0">
+                    <div class="tab-content projects-listed scroller" id="pills-tabContent">
+                        <div class="col-lg-8 col-12 tab-pane fade show active mx-auto" id="reviews" role="tabpanel"
+                            aria-labelledby="reviews-tab">
+                            <table class="table">
+                                <thead>
+                                    <tr style="background: #0B273D; color: white; font-weight: normal !important;">
+                                        <th scope="col">Category Name</th>
+                                        <th scope="col">Reviewed Projects</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="re-reviewed-table">
+                                    <tr>
+                                        <td colspan="3" class="text-center">
+                                            <div class="spinner-border text-secondary p-3" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- My Assignment -->
+                        <div class="col-lg-8 col-12 tab-pane fade mx-auto" id="assignments" role="tabpanel"
+                            aria-labelledby="assignment-tab">
+                            <div class="ass-display ">
+                                <div id="ass-default" class="re-assign all">
+                                    <table class="table">
+                                        <thead>
+                                            <tr style="background: #0B273D; color: white;">
+                                                <th scope="col" class="mr-">Status</th>
+                                                <th scope="col">Tasks</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="re-default-table">
+                                            <tr>
+                                                <td colspan="3" class="text-center">
+                                                    <div class="spinner-border text-success p-3" role="status">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade scroller" id="saved-projects" role="tabpanel"
+                            aria-labelledby="saved-projects-tab" data-saved-project>
+                            <div class="col-1 spinner-con spinner-get-saved">
+                                <div class="spinner-border mt-3" role="status">
+                                    <span class="sr-only">loading...</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade" id="shared-projects" role="tabpanel"
+                            aria-labelledby="shared-projects-tab">
+                            ...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <footer class="col-12">
+                <div class="col-12 mx-auto footer-con px-0 row mx-0">
+                    <div class="col-12 col-md px-0 links-contact row mx-0">
+                        <div class="col-12 col-md-4 mt-5 tracker-copyright text-center">
+                            <span style="cursor: pointer;" class="mt-2 bold"
+                                onclick="location.href=window.origin">DevelopND</span>
+                            <p>&copy;DevelopND 2020</p>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 site-links px-0">
+                            <ul class="list-group">
+                                <!-- onclick="location.href='about.html'" -->
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../../about.html">About Us</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../../project/search-results.html">Projects</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../../contact.html">Contact</a>
+                                </li>
+                                <!-- <li class="list-group-item py-1 px-1">
+                                        <a href="../../testimonial.html">Testimonial</a>
+                                    </li>
+                                    <li class="list-group-item py-1 px-1">
+                                        <a href="../../terms-condition.html">Terms and Conditions</a>
+                                    </li> -->
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 contact-details px-0">
+                            <ul class="list-group">
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="https://www.stakeholderdemocracy.org/">
+                                        SDN Nigeria Secretariat,
+                                        13 Location Road, Off Tombia Extension,
+                                        Oroazi, G.R.A. Phase 3,
+                                        Port Harcourt
+                                    </a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">+234 (0) 703 1593 783</li>
+                                <li class="list-group-item py-1 px-1">info@stakeholderdemocracy.org</li>
+                                <li class="list-group-item py-1 px-1">info@developnd.ng</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md px-0 subscribe-social row mx-0">
+                        <div class="col-12 col-md-6 footer-subscribe mt-5">
+                            <span class="">Subscribe to our newsletter</span>
+                            <div class="special-input px-1 col-12 col-md-12 mx-auto row mx-0">
+                                <input id="email-sub-2" type="email" class="form-control col-12 col-md-8 my-1"
+                                    placeholder="Enter Email" required>
+                                <button id="subscribe-btn-2" class="btn btn-brand col-12 col-md-4 my-1 px-0"
+                                    style="border-radius: 0px;">Subscribe</button>
+                            </div>
+                        </div>
+                        <div class="footer-social col-12 col-md-6 mt-5 mb-3 row mx-0">
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="link-con mx-auto">
+                                    <a href="https://twitter.com/SDNNigerDelta" target="_blank">
+                                        <img class="mt-1" src="../../images/twitter-brand.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="link-con mx-auto">
+                                    <a href="https://facebook.com/SDNNigerDelta/" target="_blank">
+                                        <img class="mt-1" src="../../images/facebook-brand.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="sdn-link-con mx-auto">
+                                    <a href="https://www.stakeholderdemocracy.org/" target="_blank">
+                                        <img class="" src="../../images/sdn-logo.jfif" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <div class="modal fade" id="viewMessageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title" id="exampleModalLabel">From <span class="sender ml-1">Admin</span></p>
+                    <span class="time-received">10 mins ago</span>
+                </div>
+                <div class="modal-body">
+                    <h5 class="message-title">Lorem ipsum dolor sit.</h5>
+                    <p class="full-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, dolorem unde!
+                        Quas iusto, commodi nisi
+                        qui molestias beatae magni tempora pariatur, nam dolorum officia consequuntur. Molestiae
+                        sapiente nostrum dignissimos similique a excepturi
+                        quisquam culpa dolorum beatae atque minus blanditiis sint quos asperiores maxime, cumque
+                        adipisci porro dicta quae tempora suscipit temporibus.
+                        Tempora voluptates asperiores alias amet adipisci provident eius fuga. Repellendus, iusto
+                        tempora. Expedita assumenda libero cum laudantium
+                        fugit aliquam officia, ab a doloribus tempore explicabo est. Suscipit, eaque non.</p>
+                </div>
+                <div class="col-12 mb-4 text-right">
+                    <button type="button" class="btn btn-brand" data-dismiss="modal">Mark read</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Info modal -->
+
+    <!-- Info modal -->
+    <div class="modal fade" id="notifyModal" data-backdrop="false" tabindex="-1" role="dialog"
+        aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm"
+            style="bottom: 0; position: absolute; width: 300px; margin: 10px; border-radius: 0px; padding: 5px;">
+            <div data-info-modal class="modal-content" id="info_content"
+                style="padding: 5px; background-color: white; font-size:12px;">
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- newsletter status modal -->
+    <div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border:0px; padding: 0rem 1rem;">
+                    <button type="button" data-close class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="response">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="../../js/general/third_party_cdn.js"></script>
+<script src="../../js/manipulation/userData.js"></script>
+<script src="../../js/general/global.js"></script>
+<script src="../../js/general/searchRedirect.js"></script>
+<script src="../../js/apis/getSavedProjectClass.js"></script>
+<script src="../../js/websocket_event/WebNotificationClass.js"></script>
+<script src="../../js/websocket_event/webNotification.js"></script>
+<script src="../../js/manipulation/reviewer.js"></script>
+<script src="../../js/apis/markReviewerTask.js"></script>
+<script src="../../js/apis/newsletter.js"></script>
+
+</html>

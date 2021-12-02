@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title data-title>Verify Email/Phone | DevelopND </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/auth.css">
+</head>
+
+<body class="nunito scroller">
+    <div id="containerDOM" class="container-fluid">
+        <script src="js/general/larger-screen-resize.js"></script>
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-dark our-nav col-12">
+                <a class="navbar-brand" href="index.html">
+                    <div class="logo-replace">
+                        <img src="images/developnd-logo.png" alt="logo">
+                    </div>
+                    <span class="ml-2 mt-1 bold">DevelopND</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto nav-utilities">
+                        <li class="nav-item mx-1">
+                            <a class="nav-link custom-nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link custom-nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link custom-nav-link" href="contact.html">Contact</a>
+                        </li>
+                        
+                        <li class="nav-item mx-1">
+                            <a class="nav-link custom-nav-link" href="project/search-results.html">Search</a>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link custom-nav-link" href="login.html">Sign In</a>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link custom-nav-link" href="signup.html">Register</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="auth-full col-12 border">
+                <div class="col-12 col-md-6 col-lg-5 mx-auto auth-con my-5">
+                    <h5 class="mt-5 grey bold text-center">Let's help you get back in</h5>
+                    <form class="col-12 col-md-10 mx-auto px-0 mt-5" id="forgot-form">
+                        <div class="form-group mb-2">
+                            <label class="bold grey">Email/Phone</label>
+                            <input name="email" type="text" class="form-control" placeholder="Enter Email/Phone">
+                        </div>
+                        <button type="submit" id="recover-email" class="btn btn-brand mb-5 col-12 bold">Recover</button>
+                    </form>
+                    <p class="bold request-status text-center d-none">Please check your email or phone for instructions</p>
+                </div>
+            </div>
+            <footer class="col-12">
+                <div class="col-12 mx-auto footer-con px-0 row mx-0">
+                    <div class="col-12 col-md px-0 links-contact row mx-0">
+                        <div class="col-12 col-md-4 mt-5 tracker-copyright text-center">
+                            <span style="cursor: pointer;" class="mt-2 bold" onclick="location.href=window.origin">DevelopND</span>
+                            <p>&copy;DevelopND 2020</p>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 site-links px-0">
+                            <ul class="list-group" >
+                                <!-- onclick="location.href='about.html'" -->
+                                <li class="list-group-item py-1 px-1" >
+                                    <a  href="./about.html">About Us</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="./project/search-results.html">Projects</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="./contact.html">Contact</a>
+                                </li>
+                                <!-- <li class="list-group-item py-1 px-1">
+                                    <a href="./testimonial.html">Testimonial</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="./terms-condition.html">Terms and Conditions</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 contact-details px-0">
+                            <ul class="list-group">
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="https://www.stakeholderdemocracy.org/">
+                                        SDN Nigeria Secretariat,
+                                        13 Location Road, Off Tombia Extension,
+                                        Oroazi, G.R.A. Phase 3,
+                                        Port Harcourt
+                                    </a>
+                                    </li>
+                                <li class="list-group-item py-1 px-1">+234 (0) 703 1593 783</li>
+                                <li class="list-group-item py-1 px-1">info@stakeholderdemocracy.org</li>
+                                <li class="list-group-item py-1 px-1">info@developnd.ng</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md px-0 subscribe-social row mx-0">
+                        <div class="col-12 col-md-6 footer-subscribe mt-5">
+                            <span class="">Subscribe to our newsletter</span>
+                           <div class="special-input px-1 col-12 col-md-12 mx-auto row mx-0" style="border-radius: 2px;">
+                                <input id="email-sub-2" type="email" class="form-control col-12 col-md-9 my-1"
+                                    placeholder="Enter Email" required>
+                                <button id="subscribe-btn-2" class="btn btn-brand col-12 col-md-3 my-1 px-0"
+                                    style="border-radius: 2px;">Subscribe</button>
+                            </div>
+                        </div>
+                        <div class="footer-social col-12 col-md-6 mt-5 mb-3 row mx-0">
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="link-con mx-auto">
+                                    <a href="https://twitter.com/SDNNigerDelta">
+                                        <img class="mt-1" src="images/twitter-brand.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="link-con mx-auto">
+                                    <a href="https://facebook.com/SDNNigerDelta">
+                                        <img class="mt-1" src="images/facebook-brand.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="sdn-link-con mx-auto">
+                                    <a href="https://www.stakeholderdemocracy.org/">
+                                        <img class="" src="images/sdn-logo.jfif" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <!-- newsletter status modal -->
+    <div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="border:0px; padding: 0rem 1rem;">
+              <button type="button" data-close class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="response">
+              
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script src="js/general/third_party_cdn.js"></script>
+    <script src="js/general/placeholder.js"></script>
+    <script src="js/general/routes.js"></script>
+    <script src="js/apis/auth/forgotPassword.js"></script>
+    <script src="js/apis/newsletter.js"></script>
+</body>
+
+</html>

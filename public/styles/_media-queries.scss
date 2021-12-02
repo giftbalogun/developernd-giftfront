@@ -1,0 +1,26 @@
+// @mixin small-screens-ipad {
+//     @media (max-width: 767px) {
+//         @content;
+//     }
+// }
+@mixin small-screens {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+@mixin for-992px {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+@mixin small-screens-tweak {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin large-screens {
+    @media (min-width: 768px) {
+        @content;
+    }
+}

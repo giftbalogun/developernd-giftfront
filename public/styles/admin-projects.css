@@ -1,0 +1,41 @@
+.add-project-con {
+  max-height: 80vh;
+  background: white;
+}
+
+.add-project-con .new-project-form span {
+  color: grey;
+  border: 1px solid transparent;
+  border-bottom: 2px solid grey;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.add-project-con .new-project-form label {
+  color: grey;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.add-project-con .new-project-form input,
+.add-project-con .new-project-form textarea,
+.add-project-con .new-project-form select {
+  border: none;
+  border-bottom: 2px solid grey;
+  font-size: 12px;
+  border-radius: 0px;
+  font-weight: bold;
+}
+
+.add-project-con .new-project-form input:focus, .add-project-con .new-project-form input:active,
+.add-project-con .new-project-form textarea:focus,
+.add-project-con .new-project-form textarea:active,
+.add-project-con .new-project-form select:focus,
+.add-project-con .new-project-form select:active {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+/*# sourceMappingURL=admin-projects.css.map */

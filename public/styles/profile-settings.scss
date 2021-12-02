@@ -1,0 +1,119 @@
+@import "media-queries";
+
+@mixin profile-info-sections {
+    background: white;
+
+    @include small-screens {
+        margin-left: 0px;
+    }
+
+}
+
+.settings-con {
+    background: #F7F7F7;
+
+    .setting-label {
+        font-size: 12px;
+    }
+
+    label {
+        font-size: 12px;
+        font-weight: bold;
+        color: rgb(11, 39, 61);
+    }
+
+    input {
+        border-radius: 0px;
+        font-size: 12px;
+    }
+
+    textarea {
+        border-radius: 0px;
+        font-size: 12px;
+        height: 13vh;
+    }
+
+    select {
+        border-radius: 0px;
+        font-size: 12px;
+
+        option {
+            color: grey;
+
+            &.fake-placeholder {
+                color: grey;
+            }
+        }
+    }
+
+    .label-ast {
+        color: red;
+    }
+
+    .personal-settings {
+        max-height: 115vh;
+        @include profile-info-sections;
+    }
+
+    .change-password {
+       // min-height: 60vh;
+        @include profile-info-sections;
+    }
+
+    .email-notifs {
+        min-height: 40vh;
+        @include profile-info-sections;
+        input {
+            cursor: pointer;
+        }
+    }
+
+    .delete-account {
+       // min-height: 30vh;
+        @include profile-info-sections;
+    }
+    .profile-listed {
+        min-height: 100vh;
+        background: rgb(11 , 39, 61);
+        border-radius: 5px;
+        // @include profile-info-sections;
+        // img {
+        //     border-radius: 50%;
+        //     height: 100%;
+        //     width: 100%;
+        // }
+        .profile-listed-inner {
+            .profile-listed-image {
+                height: 40vh;
+                width: 40vh;
+                border-radius: 5px;
+                color: rgba(11 , 39, 61, 0.7);
+                img {
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 5px;
+                }
+            }
+            .profile-listed-name {
+                #name-listed {
+                    font-weight: bold;
+                    color: white;
+                }
+            }
+            .profile-info-template {
+                .info-icon {
+                    color: white
+                }
+                .info-name {
+                    font-size: 10px;
+                    color: rgba(255 , 255, 255, 0.7);
+                }
+                .info-value {
+                    font-size: 12px;
+                    font-weight: bold;
+                    color: white
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,71 @@
+.about-full {
+  min-height: 1000px;
+}
+
+.about-full .about-header {
+  min-height: 331.5px;
+  background: #0b273d;
+  border: 1px solid transparent;
+}
+
+.about-full .about-header .header-words {
+  margin-top: 7%;
+}
+
+.about-full .about-header .header-words h1 {
+  color: lightblue;
+  font-size: 75px;
+}
+
+@media (max-width: 768px) {
+  .about-full .about-header .header-words h1 {
+    font-size: 35px;
+  }
+}
+
+.about-full .about-header .header-words h3 {
+  color: white;
+  font-size: 25px;
+}
+
+@media (max-width: 768px) {
+  .about-full .about-header .header-words h3 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-full .about-header {
+    min-height: 25vh;
+  }
+}
+
+.about-full .about-body {
+  min-height: 700px;
+  background: #F5F7FA;
+  border: 1px solid transparent;
+}
+
+.about-full .about-body .body-words {
+  background: white;
+  min-height: 530.4px;
+}
+
+.about-full .about-body .body-words .words-con {
+  border: 1px solid transparent;
+}
+
+.about-full .about-body .body-words .words-con h1 {
+  color: rgba(11, 39, 61, 0.7);
+}
+
+@media (max-width: 768px) {
+  .about-full .about-body .body-words .words-con h1 {
+    font-size: 25px;
+  }
+}
+
+.about-full .about-body .body-words .words-con p {
+  color: rgba(11, 39, 61, 0.7);
+}
+/*# sourceMappingURL=about.css.map */

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta property="og:url" content="https://hackanthon-258716.firebaseapp.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevelopND | Search Project" />
+    <meta property="og:description"
+        content="DevelopND is a web app where you can track all project relating to your community." />
+    <meta property="og:image" content="https://res.cloudinary.com/getfiledata/image/upload/v1581112174/DevelopND.png" />
+    <title>DevelopND | Search Project</title>
+    <link rel="icon" href="../images/developnd-logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/search-results.css">
+    <link rel="stylesheet" href="../styles/patch.css">
+    <script src="../js/general/routes.js"></script>
+    <script src="../js/general/onSession.js"></script>
+</head>
+
+<body class="nunito scroller">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0&appId=484281775613285&autoLogAppEvents=1">
+        </script>
+    <div id="containerDOM" class="container-fluid">
+        <script src="../js/general/larger-screen-resize.js"></script>
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-dark our-nav col-12">
+                <a class="navbar-brand" href="../index.html">
+                    <div class="logo-replace">
+                        <img src="../images/developnd-logo.png" alt="logo">
+                    </div>
+                    <span class="ml-2 mt-1 bold">DevelopND</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto nav-utilities">
+                        <li class="nav-item mt-2 custom-nav-li">
+                            <a class="nav-link custom-nav-link" href="../index.html">Home</a>
+                        </li>
+                        <li class="nav-item mt-2 custom-nav-li" id="nav-sign-in">
+                            <a class="nav-link custom-nav-link" href="../login.html">Sign In</a>
+                        </li>
+                        <script>
+                            if (localStorage.getItem('token')) {
+                                document.querySelector('#nav-sign-in').style.display = 'none';
+                            }
+                        </script>
+                        <li class="nav-item ml-auto mt-2 px-2 custom-nav-li">
+                            <a class="nav-link" style="cursor: pointer; margin: 0;"
+                                onclick="location.href=`${window.location.origin}/project/search-results.html`">Search</a>
+                        </li>
+                        <div class="dropdown mt-2 mx-1 track-login-user" id="notification-tab">
+                            <i class="fa fas fa-bell mr-3 mt-2 dropdown-icon" id="notificationsDropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                            <span class="badge" data-toggle="dropdown" data-real-time-count></span>
+                            <div class="dropdown-menu action-dropdown border" aria-labelledby="dropdownMenuButton">
+                                <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                    <span class="col-6" data-notification-unread-count>3 unread notifications</span>
+                                    <span class="col-6 text-right mark-as-read" data-mark-as-read>Mark all as
+                                        read</span>
+                                </div>
+                                <div class="col-12 px-0 dropdown-body scroller" data-notification-DOM>
+                                    <span class="spinner-border spinner-border-sm mx-0" style=" float: center;"
+                                        role="status">
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="dropdown mt-2 mx-1 track-login-user" id="adminNotify">
+                            <i class="fa fas fa-envelope mr-3 mt-2 dropdown-icon" id="messagesDropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                            <span class="badge">1</span>
+                            <div class="dropdown-menu action-dropdown border" aria-labelledby="dropdownMenuButton">
+                                <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                    <span class="col-6">3 messages</span>
+                                    <span class="col-6 text-right mark-as-read">Mark all as read</span>
+                                </div>
+                                <div class="col-12 px-0 dropdown-body scroller">
+                                    <div class="col-12 indiv-info row mx-0">
+                                        <div class="info-actual-con col-12" data-toggle="modal" data-target="#viewMessageModal">
+                                            <p class="info-words mb-0 mt-2">New broadcast message</p>
+                                            <span class="info-time">12 min ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <li class="nav-item dropdown track-login-user" data-user-drop-box>
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <div class="nav-user row mx-0">
+                                    <div class="col-10 col-md-8 px-0 mt-2 text-right data-user-name">
+                                        <span class="" id="nav-name" data-user-name>...</span>
+                                    </div>
+                                    <div class="col-2 col-md-4 px-0">
+                                        <div class="nav-image mr-auto mx-3 border">
+                                            <img class="" id="nav-user-image" data-user-image
+                                                src="../../images/noimage.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- dashboard.html -->
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a id="user-or-reviewer" class="dropdown-item" href="#">Dashboard</a>
+                                <a class="dropdown-item" href="../account/user/profile-settings.html">Settings</a>
+                                <a class="dropdown-item" href="#">Help</a>
+                                <a class="dropdown-item" style="cursor:pointer;" data-logout>Log Out</a>
+                            </div>
+                        </li>
+                        <script>
+                            let currentUser = JSON.parse(localStorage.getItem('DevelopND-user')) || false;
+                            console.log(currentUser);
+                            if (currentUser) {
+                                let {
+                                    user,
+                                    image_link
+                                } = currentUser;
+                                const authNav = document.querySelector('[data-user-drop-box]');
+                                const authImage = document.querySelector('[data-user-image]');
+                                const authName = document.querySelector('[data-user-name]');
+                                const authControl = Array.from(document.querySelectorAll('.auth-control'));
+
+                                if (user.image_type == 'DevelopND') {
+                                    authImage.src = `${image_link}${user.image}`;
+                                } else {
+                                    authImage.src = `${user.image}`;
+                                }
+                                if (user.name) {
+                                    nameSplit = user.name.split('');
+                                    if (nameSplit[1]) {
+                                        nameSplit = `${nameSplit[0].charAt(0).toUpperCase()} ${nameSplit[1].charAt(0).toUpperCase()}`;
+                                    } else {
+                                        nameSplit = `${nameSplit[0].charAt(0).toUpperCase()}`;
+                                    }
+                                }
+
+                                if (user.user_type == 'admin') {
+                                    user.name != null ? authName.textContent = nameSplit : authName.textContent = `Hello Admin`;
+                                } else {
+                                    user.name != null ? authName.textContent = nameSplit : authName.textContent = `Hello Member`;
+                                }
+                                authControl.map(x => {
+                                    x.style.display = 'none';
+                                });
+                                authNav.style.display = 'block';
+
+                            }
+                        </script>
+                    </ul>
+                </div>
+            </nav>
+            <div class="search-results-head col-12" data-search-placeholder-box>
+                <h6 class="mt-3 ml-5">Search Results for: <span data-search-placeholder></span></h6>
+            </div>
+            <div class="col-12 search-more-con px-0">
+                <div class="search-more col-12 col-md-8 mx-auto mt-4">
+                    <div class="special-input mb-3 col-12 col-md-12 mx-auto row mx-0 px-2"
+                        style="border-bottom:2px solid #0b273d;">
+                        <input id="search_value" style="border-radius: 0px;" type="text"
+                            class="form-control col-12 col-md-9 mt-2"
+                            placeholder="Search projects e.g. location, sector, organization or keyword" autofocus>
+                        <button class="btn btn-brand col-12 col-md-3 my-1 px-0" id="project_search">Search</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-pagination col-12 border-bottom">
+                <div class="col-12 col-md-4 ml-auto mr-5">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination mx-auto">
+                            <li id="first-page-button" class="page-item" onclick="showFirstPage()">
+                                <a class="page-link" href="#" aria-label="First">
+                                    <!-- <span aria-hidden="true">&laquo;</span> -->
+                                    <i class="fas fa-step-backward fa-xs"></i>
+                                </a>
+                            </li>
+                            <li id="prev-page-button" class="page-item" onclick="showPrevPage()">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <i class="fas fa-less-than fa-xs"></i>
+                                </a>
+                            </li>
+                            <ul class="list-group-horizontal list-group" id="available-pages">
+                                <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            </ul>
+                            <li id="next-page-button" class="page-item" onclick="showNextPage()">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <i class="fas fa-greater-than fa-xs"></i>
+                                </a>
+                            </li>
+                            <li id="last-page-button" class="page-item" onclick="showLastPage()">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <!-- <span aria-hidden="true">&raquo;</span> -->
+                                    <i class="fas fa-step-forward fa-xs"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- Start of project filter and Check list -->
+            <div class="search-results-con col-12 row mx-0">
+                <button type="button" id="sidebarCollapse" class="btn sidebar-btn p-1 mt-2 ml-3">
+                    <i class="fas fa fa-filter"></i>
+                </button>
+                <div id="filter-section" class="col-12 col-sm-3 col-md-4 col-lg-3 filter-section mt-1 scroller">
+                    <div class="now-showing col-12 mt-3 font-12px" id="now-showing">
+                        <!-- <span class="grey font-12px">Now showing projects 1-20 of 50</span> -->
+                    </div>
+                    <div class="side-bar">
+                        <div id="state-filter" class="state-filter col-12 mt-0">
+                            <button class="panel-btn text-white px-2 py-1 mb-2 col-12 border-0 text-left"
+                                style="background: #0b273d; border-radius: 3px;">States<span class="float-right"></span>
+                            </button>
+                            <div class="panel-wrapper state px-2 pl-4" style="background: #f1f1f1; border-radius: 3px;">
+                                <div class="form-check mb-3 mt-3">
+                                    <input class="check-state form-check-input client-search" type="checkbox"
+                                        value="Abia">
+                                    <label class="form-check-label">
+                                        Abia (<span data-abia-count>...</span>)
+                                    </label>
+                                </div>
+                                <div style="border-left: 1px solid #0b273d;" class="panel-wrapper data-lga0 ml-1 pl-1">
+
+                                </div>
+                                <!-- <div id="state-lga-comm0" class="form-group font-12px col-12 px-0 mx-0 row location-lga-community">
+                                    <div class="multiselect font-10px col-6 px-0 mx-0 form-control">
+                                        <div class="selectBox" onclick="showCheckboxes('lga0')">
+                                        <select>
+                                            <option>LGA</option>
+                                        </select>
+                                        <div class="overSelect"></div>
+                                        </div>
+                                        <div id="checkboxes" data-lga0  class="checkboxes">
+                                    
+                                        </div>
+                                    </div>
+                                    <div class="multiselect font-10px col-6 px-0 mx-0 form-control">
+                                        <div class="selectBox" onclick="showCheckboxes('comm0')">
+                                        <select>
+                                            <option>Community</option>
+                                        </select>
+                                        <div class="overSelect"></div>
+                                        </div>
+                                        <div id="checkboxes" data-comm0 class="checkboxes scroller">
+                                        
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Akwa Ibom">
+                                    <label class="form-check-label">
+                                        Akwa Ibom (<span data-akwa-ibom-count>...</span>)
+                                    </label>
+                                </div>
+                                <div style="border-left: 1px solid #0b273d;" class="panel-wrapper data-lga1 ml-1 pl-1">
+
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Bayelsa">
+                                    <label class="form-check-label">
+                                        Bayelsa (<span data-bayelsa-count>...</span>)
+                                    </label>
+                                </div>
+                                <div style="border-left: 1px solid #0b273d;" class="panel-wrapper data-lga2 ml-1 pl-1">
+
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Cross River">
+                                    <label class="form-check-label">
+                                        Cross River (<span data-cross-river-count>...</span>)
+                                    </label>
+                                </div>
+                                <div style="border-left: 1px solid #0b273d;" class="panel-wrapper data-lga3 ml-1 pl-1">
+
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Delta">
+                                    <label class="form-check-label">
+                                        Delta (<span data-delta-count>...</span>)
+                                    </label>
+                                </div>
+                                <div style="border-left: 1px solid #0b273d;" class="panel-wrapper data-lga4 ml-1 pl-1">
+
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Edo">
+                                    <label class="form-check-label">
+                                        Edo (<span data-edo-count>...</span>)
+                                    </label>
+                                </div>
+                                <div style="border-left: 1px solid #0b273d;" class="panel-wrapper data-lga5 ml-1 pl-1">
+
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Imo">
+                                    <label class="form-check-label">
+                                        Imo (<span data-imo-count>...</span>)
+                                    </label>
+                                </div>
+                                <div style="border-left: 1px solid #0b273d;" class="panel-wrapper data-lga6 ml-1 pl-1">
+
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Ondo">
+                                    <label class="form-check-label">
+                                        Ondo (<span data-ondo-count>...</span>)
+                                    </label>
+                                </div>
+                                <div style="border-left: 1px solid #0b273d;" class="panel-wrapper data-lga7 ml-1 pl-1">
+
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Rivers">
+                                    <label class="form-check-label">
+                                        Rivers (<span data-rivers-count>...</span>)
+                                    </label>
+                                </div>
+                                <div style="border-left: 1px solid #0b273d;" class="panel-wrapper data-lga8 ml-1 pl-1">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="status-filter" class="status-filter col-12 mt-3">
+                            <button class="panel-btn text-white px-2 py-1 mb-2 col-12 border-0 text-left"
+                                style="background: #0b273d; border-radius: 3px;">Status
+                                <span class="float-right">+</span></button>
+                            <div class="panel-wrapper px-4" style="background: #f1f1f1; border-radius: 3px;">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Not-Started">
+                                    <label class="form-check-label">
+                                        Not Started (<span data-not-started-count>...</span>)
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="In-Progress">
+                                    <label class="form-check-label">
+                                        In Progress (<span data-progress-count>...</span>)
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Completed">
+                                    <label class="form-check-label">
+                                        Completed (<span data-completed-count>...</span>)
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Due-To-Start">
+                                    <label class="form-check-label">
+                                        Due To Start (<span data-due-to-start-count>...</span>)
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Abandoned">
+                                    <label class="form-check-label" style="color: red;">
+                                        Abandoned (<span data-abandoned-count>...</span>)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sector-filter" class="sectore-filter col-12 mt-3">
+                            <button id="panel-btn" class="panel-btn text-white px-2 py-1 mb-2 col-12 border-0 text-left"
+                                style="background: #0b273d; border-radius: 3px;">Project Sectors
+                                <span class="float-right">+</span></button>
+                            <div data-project-sectors class="panel-wrapper px-4"
+                                style="background: #f1f1f1; border-radius: 3px;">
+                                <div class="form-check mb-3">
+                                    <label class="form-check-label">
+                                        Loading Project Sector...
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of project filter and Check list -->
+
+                <div class="col-12 col-sm-9 col-md-8 col-lg-9 mt-2 mb-4 projects-section scroller" data-project-dom>
+                    <div class="col-1 spinner-con text-center" style="top: 20%;">
+                        <div class="spinner-border mt-3" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="col-12">
+                <div class="col-12 mx-auto footer-con px-0 row mx-0">
+                    <div class="col-12 col-md px-0 links-contact row mx-0">
+                        <div class="col-12 col-md-4 mt-5 tracker-copyright text-center">
+                            <span style="cursor: pointer;" class="mt-2 bold"
+                                onclick="location.href=window.origin">DevelopND</span>
+                            <p>&copy;DevelopND 2020</p>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 site-links px-0">
+                            <ul class="list-group">
+                                <!-- onclick="location.href='about.html'" -->
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../about.html">About Us</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../project/search-results.html">Projects</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../contact.html">Contact</a>
+                                </li>
+                                <!-- <li class="list-group-item py-1 px-1">
+                                    <a href="../testimonial.html">Testimonial</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../terms-condition.html">Terms and Conditions</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 contact-details px-0">
+                            <ul class="list-group">
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="https://www.stakeholderdemocracy.org/">
+                                        SDN Nigeria Secretariat,
+                                        13 Location Road, Off Tombia Extension,
+                                        Oroazi, G.R.A. Phase 3,
+                                        Port Harcourt
+                                    </a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">+234 (0) 703 1593 783</li>
+                                <li class="list-group-item py-1 px-1">info@stakeholderdemocracy.org</li>
+                                <li class="list-group-item py-1 px-1">info@developnd.ng</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md px-0 subscribe-social row mx-0">
+                        <div class="col-12 col-md-6 footer-subscribe mt-5">
+                            <span class="">Subscribe to our newsletter</span>
+                            <div class="special-input px-1 col-12 col-md-12 mx-auto row mx-0"
+                                style="border-radius: 2px;">
+                                <input id="email-sub-2" type="email" class="form-control col-12 col-md-9 my-1"
+                                    placeholder="Enter Email" required>
+                                <button id="subscribe-btn-2" class="btn btn-brand col-12 col-md-3 my-1 px-0"
+                                    style="border-radius: 2px;">Subscribe</button>
+                            </div>
+                        </div>
+                        <div class="footer-social col-12 col-md-6 mt-5 mb-3 row mx-0">
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="link-con mx-auto">
+                                    <a href="https://twitter.com/SDNNigerDelta" target="_blank">
+                                        <img class="mt-1" src="../images/twitter-brand.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="link-con mx-auto">
+                                    <a href="https://facebook.com/SDNNigerDelta/" target="_blank">
+                                        <img class="mt-1" src="../images/facebook-brand.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="sdn-link-con mx-auto">
+                                    <a href="https://www.stakeholderdemocracy.org/" target="_blank">
+                                        <img class="" src="../images/sdn-logo.jfif" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <div class="modal fade" id="viewMessageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title" id="exampleModalLabel">From <span class="sender ml-1">Admin</span></p>
+                    <span class="time-received">10 mins ago</span>
+                </div>
+                <div class="modal-body">
+                    <h5 class="message-title">Lorem ipsum dolor sit.</h5>
+                    <p class="full-message">yello</p>
+                </div>
+                <div class="col-12 mb-4 text-right">
+                    <button type="button" class="btn btn-brand" data-dismiss="modal">Mark read</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Info modal -->
+
+    <div class="modal fade" id="notifyModal" data-backdrop="false" tabindex="-1" role="dialog"
+        aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm"
+            style="bottom: 0; position: absolute; width: 300px; margin: 10px; border-radius: 0px; padding: 5px;">
+            <div data-info-modal class="modal-content" id="info_content"
+                style="padding: 5px; background-color: white; color: green; font-size:12px;">
+
+            </div>
+        </div>
+    </div>
+    <!-- newsletter status modal -->
+    <div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border:0px; padding: 0rem 1rem;">
+                    <button type="button" data-close class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="response">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fb-root"></div>
+</body>
+<script src="../js/general/global.js"></script>
+<script src="../js/general/third_party_cdn.js"></script>
+<script src="../js/general/placeholder.js"> </script>
+<script src="../js/general/searchRedirect.js"></script>
+<script src="../js/apis/searchProject.js"></script>
+<script src="../js/apis/saveProject.js"></script>
+<script src="../js/apis/fetchProjectSector.js"></script>
+<script src="../js/apis/fetchComunnity.js"></script>
+<script src="../js/apis/fetchLga.js"></script>
+<script src="../js/apis/newsletter.js"></script>
+<script src="../../js/websocket_event/WebNotificationClass.js"></script>
+<script src="../js/websocket_event/webNotification.js"></script>
+<script>
+    (() => {
+        let validUser = JSON.parse(localStorage.getItem('DevelopND-user')) || false;
+        if (validUser) {
+            let {
+                user
+            } = validUser;
+            let myHref = document.querySelector('#user-or-reviewer');
+
+            if (user.user_type === 'reviewer') {
+                myHref.setAttribute('href', '../account/reviewer/reviewer.html');
+            } else if (user.user_type === 'admin') {
+                myHref.setAttribute('href', '../account/admin/dashboard-home.html');
+            } else {
+                myHref.setAttribute('href', '../account/user/dashboard.html');
+            }
+        }
+    })();
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#filter-section').toggleClass('d-none');
+        });
+        if (window.innerWidth < 768) {
+            $('#filter-section').toggleClass('d-none');
+        }
+    });
+
+    var initialMaxHeight;
+    var expanded = [];
+    function showCheckboxes(form) {
+        //var checkboxes = document.querySelector(`[data-${form}]`);
+        //console.log(checkboxes)            
+        const index_check = expanded.indexOf(form)
+        console.log(index_check)
+        if (index_check == -1) {
+            console.log('i')
+            //checkboxes.style.display = "block";
+            // collapse panel
+            expanded.push(form);
+        } else {
+            console.log('j')
+            // collapse panel
+            //checkboxes.style.display = "none";
+            expanded.splice(index_check, 1);
+        }
+        console.log(expanded)
+    }
+</script>
+
+</html>

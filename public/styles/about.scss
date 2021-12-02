@@ -1,0 +1,51 @@
+@import "media-queries";
+
+.about-full {
+    min-height: 1000px;
+    .about-header {
+        min-height:  331.5px;
+        background: rgb(11, 39, 61);
+        border: 1px solid transparent;
+        .header-words {
+            margin-top: 7%;
+            h1 {
+                color: lightblue;
+                font-size: 75px;
+                @include small-screens {
+                    font-size: 35px;
+                  }
+            }
+            h3 {
+                color: white;
+                font-size: 25px;
+                @include small-screens {
+                    font-size: 15px;
+                  }
+            }
+        }
+        @include small-screens {
+            min-height: 25vh;
+          }
+    }
+    .about-body {
+        min-height: 700px;
+        background: #F5F7FA;
+        border: 1px solid transparent;
+        .body-words {
+            background: white;
+            min-height: 530.4px;
+            .words-con {
+                border: 1px solid transparent;
+                h1 {
+                    color: rgba(11, 39, 61, 0.7);
+                    @include small-screens {
+                        font-size: 25px;
+                      }
+                }
+                p {
+                    color: rgba(11, 39, 61, 0.7);
+                }
+            }
+        }
+    }
+}

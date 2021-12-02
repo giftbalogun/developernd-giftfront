@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title data-title>Report | DevelopND</title>
+    <link rel="icon" href="../../images/developnd-logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/index.css">
+    <link rel="stylesheet" href="../../styles/dashboard.css">
+    <link rel="stylesheet" href="../../styles/admin-dashboard.css">
+    <link rel="stylesheet" href="../../styles/admin-projects.css">
+    <link rel="stylesheet" href="../../package/Year-Picker-Text-Input/yearpicker.css">
+    <script src="../../js/general/routes.js"></script>
+    <script src=" ../../js/general/placeholder.js"> </script>
+    <script src="../../js/general/onSession.js"></script>
+</head>
+
+<body class="nunito scroller">
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <a class="navbar-brand mt-3" style="cursor: pointer; margin-left: 1vw;" onclick="location.href=`${window.location.origin}`">
+                <div class="logo-replace">
+                    <img src="../../images/developnd-logo.png" alt="logo">
+                </div>
+                <span class="ml-2 mt-1 bold">DevelopND</span>
+            </a>
+            <ul class="list-unstyled components">
+                <li class="mt-4 current">
+                    <a href="dashboard-home.html"><i class="fa fas mr-3 fa-dashboard"></i>Dashboard</a>
+                </li>
+                <li class="mt-4">
+                    <a href="admin-projects.html"><i class="fa fas mr-3 fa-cubes"></i>Projects</a>
+                </li>
+               
+                <li class="mt-4">
+                    <a href="admin-users.html"><i class="fa fas mr-3 fa-user"></i>Users</a>
+                </li>
+                <li class="mt-4">
+                    <a href="reports.html"><i class="fa fas mr-3 fa-book"></i>Reports</a>
+                </li>
+                <li class="mt-4">
+                    <a href="text-messages.html"><i class="fa fas mr-3 fa-envelope"></i>Text Messages</a>
+                </li>
+                <li id="sidebar-logout" class="mt-4" onclick="sidebarLogoutFunc()">
+                    <span style="color: red"><i class="fa fas mr-3 ml-4 fa-sign-out" style="color:red"></i>Logout</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <nav class="navbar navbar-expand-lg navbar-dark our-nav col-12">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto nav-utilities">
+                                <!-- <li class="nav-item mx-3 mt-2">
+                                    <a class="nav-link" href="#">Categories</a>
+                                </li> -->
+                                <li class="nav-item mx-3 mt-2 ml-auto">
+                                    <a class="nav-link" style="cursor: pointer;"
+                                        onclick="location.href=`${window.location.origin}/project/search-results.html`">Search</a>
+                                </li>
+                                <div class="dropdown mt-2 mx-3" id="notification-tab">
+                                    <i class="fa fas fa-bell mr-3 mt-2 dropdown-icon" id="notificationsDropdown"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                    <span class="badge" data-toggle="dropdown" data-real-time-count>3</span>
+                                    <div class="dropdown-menu action-dropdown border"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                            <span class="col-6" data-notification-unread-count>3 unread
+                                                notifications</span>
+                                            <span class="col-6 text-right mark-as-read" data-mark-as-read>Mark all as
+                                                read</span>
+                                        </div>
+                                        <div class="col-12 px-0 dropdown-body scroller" data-notification-DOM>
+                                            <span class="spinner-border spinner-border-sm mx-0" style=" float: center;"
+                                                role="status">
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown mt-2 mx-3">
+                                    <i class="fa fas fa-envelope mr-3 mt-2 dropdown-icon" id="messagesDropdown"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                    <span class="badge">1</span>
+                                    <div class="dropdown-menu action-dropdown border"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                            <span class="col-6">3 messages</span>
+                                            <span class="col-6 text-right mark-as-read">Mark all as read</span>
+                                        </div>
+                                        <div class="col-12 px-0 dropdown-body scroller">
+                                            <div class="col-12 indiv-info row mx-0">
+                                                <div class="info-actual-con col-12" data-toggle="modal"
+                                                    data-target="#viewMessageModal">
+                                                    <p class="info-words mb-0 mt-2">New broadcast message</p>
+                                                    <span class="info-time">12 min ago</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <li class="nav-item dropdown" data-user-drop-box>
+                                    <a class="nav-link" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="nav-user row mx-0">
+                                            <div class="col-6 col-md-4 px-0">
+                                                <div class="nav-image mr-auto mx-3 border">
+                                                    <img class="" data-user-image id="nav-user-image"
+                                                        src="../../images/noimage.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-10 col-md-8 px-0 pt-2 pl-2 data-user-name">
+                                                <span class="" data-user-name id="nav-name">Loading...</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- dashboard.html -->
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="dashboard.html">Dashboard</a>
+                                        <a class="dropdown-item" href="#">Settings</a>
+                                        <a class="dropdown-item" href="#">Help</a>
+                                        <a class="dropdown-item" style="cursor:pointer;" data-logout>Log Out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="col-12 table-page-full row mx-0">
+                        <button type="button" id="sidebarCollapse" class="btn sidebar-btn p-1 mt-2 ml-2">
+                            <i class="fas fa fa-align-left"></i>
+                        </button>
+                        <div class="col-12 col-md-9 px-1">
+                            <div class="col-12 table-con mt-4">
+                                <p class="main-count mb-0"><span id="total-report-value"></span>Text Message Report</p>
+                                <div class="col-12 filter-table border my-2"></div>
+                                <div class="col-12 scroller px-0" style="max-height: 80vh;">
+                                    <div class="col-12 px-0" style="height: 80vh;">
+                                        <table class="table table-bordered dashboard-table col-12 px-0">
+                                            <thead>
+                                                <tr>
+                                                    <!-- <th scope="col">#</th> -->
+                                                    <th scope="col">No.</th>
+                                                    <th scope="col">From</th>
+                                                    <th scope="col">Message</th>
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="text-message-reports-table" class="scroller">
+                                                <div class="col-1 spinner-con" id="spinner-users">
+                                                    <div class="spinner-border mt-3" role="status">
+                                                        <span class="sr-only">loading...</span>
+                                                    </div>
+                                                  </div>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search-pagination col-12 px-0 scroller">
+                                <div class="col-12 px-0">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination">
+                                            <li id="first-page-button" class="page-item" onclick="showFirstPage()">
+                                                <a class="page-link" href="#" aria-label="First">
+                                                    <!-- <span aria-hidden="true">&laquo;</span> -->
+                                                    <i class="fas fa fa-step-backward fa-xs"></i>
+                                                </a>
+                                            </li>
+                                            <li id="prev-page-button" class="page-item" onclick="showPrevPage()">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <i class="fas fa fa-less-than fa-xs"></i>
+                                                </a>
+                                            </li>
+                                            <ul class="list-group-horizontal list-group" id="available-pages">
+                                                <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                            </ul>
+                                            <li id="next-page-button" class="page-item" onclick="showNextPage()">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <i class="fas fa fa-greater-than fa-xs"></i>
+                                                </a>
+                                            </li>
+                                            <li id="last-page-button" class="page-item" onclick="showLastPage()">
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                    <!-- <span aria-hidden="true">&raquo;</span> -->
+                                                    <i class="fas fa fa-step-forward fa-xs"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3 px-1">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../js/general/third_party_cdn.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="../../js/manipulation/userData.js"></script>
+<script src="../../js/general/global.js"></script>
+<script src="../../js/websocket_event/WebNotificationClass.js"></script>
+<script src="../../js/websocket_event/webNotification.js"></script>
+<script src="js/fetchTextMessages.js"></script>
+<script src="js/getstats.js"></script>
+<script src="js/table-pagination.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+            $("#sidebar").toggleClass("active");
+        });
+    });
+</script>
+</html>

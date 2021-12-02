@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title data-title>Project Review | DevelopND</title>
+    <link rel="icon" href="../../images/developnd-logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/reviewer specific/reviewer.css">
+    <link rel="stylesheet" href="../../styles/reviewer specific/reviewed-project-details.css">
+</head>
+
+<body class="nunito scroller body-wrapper">
+    <!-- Loading... -->
+    <div class="reviewer-spinner text-center">
+        <div class="spinner-border mt-3 text-secondary" style="top: 50%; width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>     
+    <div class="container-fluid">
+        <div class="row reviewing-proj-dom">           
+            <nav class="navbar navbar-expand-lg navbar-dark our-nav col-12">
+                <a class="navbar-brand" style="cursor: pointer;" onclick="location.href=`${window.location.origin}`">
+                    <div class="logo-replace">
+                        <img src="../../images/developnd-logo.png" alt="logo">
+                    </div>
+                    <span class="ml-2 mt-1 bold">DevelopND</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto nav-utilities">
+                        <!-- <li class="nav-item mx-3 mt-2">
+                            <a class="nav-link" href="#">Categories</a>
+                        </li> -->
+                        <li class="nav-item mx-3 mt-2 ml-auto">
+                            <a class="nav-link" style="cursor: pointer;" onclick="location.href=`${window.location.origin}/project/search-results.html`">Search</a>
+                        </li>
+                        <div class="dropdown mt-2 mx-3" id="notification-tab">
+                            <i class="fa fas fa-bell mr-3 mt-2 dropdown-icon" id="notificationsDropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                            <span class="badge" data-toggle="dropdown" data-real-time-count></span>
+                            <div class="dropdown-menu action-dropdown border" aria-labelledby="dropdownMenuButton">
+                                <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                    <span class="col-6" data-notification-unread-count>3 unread notifications</span>
+                                    <span class="col-6 text-right mark-as-read"data-mark-as-read>Mark all as read</span>
+                                </div>
+                                <div class="col-12 px-0 dropdown-body scroller" data-notification-DOM>
+                                    <span class="spinner-border spinner-border-sm mx-0" style=" float: center;"
+                                        role="status">
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="dropdown mt-2 mx-3">
+                            <i class="fa fas fa-envelope mr-3 mt-2 dropdown-icon" id="messagesDropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                            <span class="badge">1</span>
+                            <div class="dropdown-menu action-dropdown border" aria-labelledby="dropdownMenuButton">
+                                <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                    <span class="col-6">3 messages</span>
+                                    <span class="col-6 text-right mark-as-read">Mark all as read</span>
+                                </div>
+                                <div class="col-12 px-0 dropdown-body scroller">
+                                    <div class="col-12 indiv-info row mx-0">
+                                        <div class="info-actual-con col-12" data-toggle="modal" data-target="#viewMessageModal">
+                                            <p class="info-words mb-0 mt-2">New broadcast message</p>
+                                            <span class="info-time">12 min ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <li class="nav-item dropdown" data-user-drop-box>
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <div class="nav-user row mx-0">
+                                    <div class="col-10 col-md-8 px-0 pl-2 data-user-name" style="text-align: right !important;">
+                                        <span class="" data-user-name id="nav-name">loading...</span>
+                                    </div>
+                                    <div class="col-2 col-md-4 px-0">
+                                        <div class="nav-image mr-auto mx-3 border">
+                                            <img class="" data-user-image id="nav-user-image" src="../../images/noimage.png" alt="">
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </a>
+                            <!-- dashboard.html -->
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="reviewer.html">Dashboard</a>                                
+                                <a class="dropdown-item" href="../user/profile-settings.html">Settings</a>
+                                <a class="dropdown-item" href="#">Help</a>
+                                <a class="dropdown-item" style="cursor:pointer;" data-logout>Log Out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="re-welcome-bg col-12">
+                <div class="col-12 col-md-8 mx-auto pt-5 welcome-words text-left">
+                    <h2 class="bold text-center">Track and report on ongoing projects in your community</h2>
+                    <p class="lead text-center">View and Participate in Tracking Niger Delta Development Projects</p>
+                </div>
+            </div>
+
+            <div class="container re-project-row">
+                <div class="row d-flex mt-4 mb-4">
+                    <div class="col-lg-6 col-12 order-2 order-lg-1">
+                        <div class="card">
+                            <img class="rev-image card-image-top img-fluid" src="">
+                        </div>
+                        <div class="card mt-4 border-0">
+                            <p class="rev-descript">
+                                <!-- Lorem Ipsum is simply dummy text of the printing and 
+                                typesetting industry. Lorem Ipsum has been the industry's 
+                                standard dummy text ever since the 1500s, when an unknown p
+                                rinter took a galley of type and scrambled it to make a type 
+                                specimen book. -->
+                            </p>
+                        </div>
+                    </div>
+                    <div class="container col-lg-6 col-12 order-1 order-lg-2">
+                        <div class="card p-3 mb-3">
+                            <div> 
+                                <div>
+                                    <h4 class="mt-1 rev-project-title"></h4>
+                                    <h6 class="mb-3 text-primary">Name of Contractor: <span class="rev-contractor-name"></span></h6>
+                                    <p class="font-13px">Activity Status:
+                                        <span class="ml-3 text-light px-1 rev-status py-0 rounded">In Progress</span></p>
+                                </div>
+                                <!-- <div>
+                                    <p class="rev-descript2 mt-3 mb-3">
+                                        It was popularised in the 1960s with the release of 
+                                        Letraset sheets containing Lorem Ipsum passages.
+                                    </p>
+                                </div> -->
+                                <div class="font-12px mb-5">
+                                    <div class="row col-12 d-flex justify-content-start">
+                                        <div class="col-6 p-0">
+                                            <p class="mb-0">Project ID: <span class="rev-project-id text-primary">1024578</span></p>
+                                        </div>
+                                        <div class="col-6 p-0">
+                                            <p class="mb-0">Project Budget: 
+                                                <span class="rev-project-budget text-primary">100,000,000</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row col-12 d-flex justify-content-start">
+                                        <div class="col-6 p-0">
+                                            <p>Start Date: 
+                                                <span class="rev-startdate2 text-primary">20/20/2020</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-6 p-0">
+                                            <p>End Date: 
+                                                <span class="rev-end-date text-primary">15/11/2020 10:00am</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div>
+                                <h6>State / LGA / Location <span class="rev-location text-primary ml-5">Port Harcourt</span></h6>
+                                <div class="rev-google-map col-12 p-0">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container re-project-row p-0">
+                <div class="row d-flex col-12 m-0 mb-4">
+                    <div class="col-lg-6 col-12">
+                        <div class="mt-4">
+                            <h5>Budget</h5>
+                            <table class="tabel table-bordered col-lg-7 col-12 mb-3 mt-4">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" colspan="2">Budget Title</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Spent</td>
+                                        <td class="text-primary rev-spent">600,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Start Date</td>
+                                        <td class="text-primary rev-startdate">01/05/2020</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="rev-about-budget">
+                                <!-- It was popularised in the 1960s with the release of 
+                                Letraset sheets containing Lorem Ipsum passages, and more recently 
+                                with desktop publishing software like Aldus PageMaker including 
+                                versions of Lorem Ipsum. -->
+                            </p>
+                            <div class="mt-4">
+                                <h5>About Contractor</h5>
+                                <p class="rev-about-contractor">
+                                    It was popularised in the 1960s with the release of 
+                                    Letraset sheets containing Lorem Ipsum passages.
+                                </p>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12 card p-3">
+                        <div class="mb-4">
+                            <h4 class="card-title">Evaluation Form</h4>
+                        </div>
+                        <div>
+                            <form id="re-evaluation-form">
+                                <div class="form-group mb-4">
+                                    <lable for="criteria-one"> 
+                                        Review Title                                       
+                                    </lable>
+                                    <input id="criteria-one" name="criteria_1" class="form-control mt-2">                                       
+                                    <span class="d-none criteria-one text-danger">The field should not be empty</span>
+                                </div>
+                                <div class="form-group mb-4">                                    
+                                    <lable for="comment"> 
+                                        Review Description                                       
+                                    </lable>
+                                    <textarea id="comment" name="comments" class="form-control mt-2"></textarea> 
+                                    <span class="d-none comment text-danger">The field should not be empty</span>           
+                                </div>
+                                <span class="text-danger reviewer-alert">Image should not be more than 20MB</span>
+                                <div class="custom-file">                                    
+                                    <input type="file" name="filename" onchange="previewReviewerImage(this.files)" 
+                                    accept=".png, .jpg, .jpeg, .mp4, .avi" class="custom-file-input" id="re-attach-file">
+                                    <label class="custom-file-label reviewer-image-name" for="re-attach-file">Select your image!</label>
+                                </div>
+                                <div class="pb-3">
+                                    <span class="clear-media float-right d-none" style="cursor: pointer; font-size: 16px;"> 
+                                        Remove <i class="text-danger fa fa-trash-o mt-2 fa-xs"></i></span>
+                                </div>                                
+                                <div class="uploaded-image-wrapper mt-3 col-12" >
+                                    <!-- <img class="uploaded-image d-none" src="" alt="Image Preview"> -->
+                                    <p class="preview-image-default col-12 text-center">No Image</p>
+                                </div>                                
+                                <div class="mt-4">
+                                    <button type="button" id="viewBtn" style="color: white; background: #192965;"
+                                        class="btn float-right col-12 col-lg-3">
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>    
+                    </div>                    
+                </div>                
+            </div>
+            
+            <footer class="col-12">
+                <div class="col-12 mx-auto footer-con px-0 row mx-0">
+                    <div class="col-12 col-md px-0 links-contact row mx-0">
+                        <div class="col-12 col-md-4 mt-5 tracker-copyright text-center">
+                            <span style="cursor: pointer;" class="mt-2 bold"
+                                onclick="location.href=window.origin">DevelopND</span>
+                            <p>&copy;DevelopND 2020</p>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 site-links px-0">
+                            <ul class="list-group">
+                                <!-- onclick="location.href='about.html'" -->
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../../about.html">About Us</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../../project/search-results.html">Projects</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../../contact.html">Contact</a>
+                                </li>
+                                <!-- <li class="list-group-item py-1 px-1">
+                                    <a href="../../testimonial.html">Testimonial</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../../terms-condition.html">Terms and Conditions</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 contact-details px-0">
+                            <ul class="list-group">
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="https://www.stakeholderdemocracy.org/">
+                                        SDN Nigeria Secretariat,
+                                        13 Location Road, Off Tombia Extension,
+                                        Oroazi, G.R.A. Phase 3,
+                                        Port Harcourt
+                                    </a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">+234 (0) 703 1593 783</li>
+                                <li class="list-group-item py-1 px-1">info@stakeholderdemocracy.org</li>
+                                <li class="list-group-item py-1 px-1">info@developnd.ng</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md px-0 subscribe-social row mx-0">
+                        <div class="col-12 col-md-6 footer-subscribe mt-5">
+                            <span class="">Subscribe to our newsletter</span>
+                           <div class="special-input px-1 col-12 col-md-12 mx-auto row mx-0" style="border-radius: 2px;">
+                                <input id="email-sub-2" type="email" class="form-control col-12 col-md-9 my-1"
+                                    placeholder="Enter Email" required>
+                                <button id="subscribe-btn-2" class="btn btn-brand col-12 col-md-3 my-1 px-0"
+                                    style="border-radius: 2px;">Subscribe</button>
+                            </div>
+                        </div>
+                        <div class="footer-social col-12 col-md-6 mt-5 mb-3 row mx-0">
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="link-con mx-auto">
+                                    <a href="https://twitter.com/SDNNigerDelta" target="_blank">
+                                        <img class="mt-1" src="../../images/twitter-brand.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="link-con mx-auto">
+                                    <a href="https://facebook.com/SDNNigerDelta/" target="_blank">
+                                        <img class="mt-1" src="../../images/facebook-brand.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="sdn-link-con mx-auto">
+                                    <a href="https://www.stakeholderdemocracy.org/" target="_blank">
+                                        <img class="" src="../../images/sdn-logo.jfif" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>           
+        </div>
+    </div>    
+  
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+        <div class="modal-header alert-secondary">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Preview your submission</h5>
+            <button type="button" class="close review-preview-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div id="reviewer-evaluate">
+
+            </div>
+            <div class="media-file">
+                <img src="" class="preview-image-modal" alt="">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="review-edit" type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button>
+            <button id="rewiew-confirm" type="button" onclick="postReviewForm()" class="btn btn-success">Confirm</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Success or failure modal -->
+    <div id="re-save-success-failure">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="reviewer-post-message col-10 col-lg-4">
+                
+            </div>
+        </div>        
+    </div>    
+    <!-- newsletter status modal -->
+    <div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="border:0px; padding: 0rem 1rem;">
+              <button type="button" data-close class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="response">
+              
+            </div>
+          </div>
+        </div>
+    </div>
+    <script src=" ../../js/general/placeholder.js"></script>
+    <script src="../../js/general/third_party_cdn.js"></script>
+    <script src="../../js/manipulation/userData.js"></script>
+    <script src="../../js/general/global.js"></script>
+    <script src="../../js/general/routes.js"></script>
+    <script src="../../js/apis/viewReviewedProject.js"></script>
+    <script src="../../js/manipulation/reviewed-project-details.js"></script>
+    <script src="../../js/apis/postReviews.js"></script>
+    <script src="../../js/apis/newsletter.js"></script>
+</body>
+</html>

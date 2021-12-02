@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title data-title>Project Reviewed List | DevelopND </title>
+    <link rel="icon" href="../../images/developnd-logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/search-results.css">
+    <link rel="stylesheet" href="../../styles/reviewer specific/reviewed-projects.css">
+</head>
+
+<body class="nunito scroller">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-dark our-nav col-12">
+                <a class="navbar-brand" style="cursor: pointer;" onclick="location.href=`${window.location.origin}`">
+                    <div class="logo-replace">
+                        <img src="../../images/developnd-logo.png" alt="logo">
+                    </div>
+                    <span class="ml-2 mt-1 bold">DevelopND</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto nav-utilities">
+
+                        <li class="nav-item mx-3 mt-2 ml-auto" id="nav-sign-in">
+                            <a class="nav-link" href="../login.html">Sign In</a>
+                        </li>
+                        <script>
+                            if (localStorage.getItem('token')) {
+                                document.querySelector('#nav-sign-in').style.display = 'none';
+                            }
+                        </script>
+
+                        <li class="nav-item mx-3 mt-2 ml-auto">
+                            <a class="nav-link" style="cursor: pointer;"
+                                onclick="location.href=`${window.location.origin}/project/search-results.html`">Search</a>
+                        </li>
+                        <div class="dropdown mt-2 mx-3 ml-auto track-login-user" id="notification-tab">
+                            <i class="fa fas fa-bell mr-3 mt-2 dropdown-icon" id="notificationsDropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                            <span class="badge" data-toggle="dropdown" data-real-time-count></span>
+                            <div class="dropdown-menu action-dropdown border" aria-labelledby="dropdownMenuButton">
+                                <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                    <span class="col-6" data-notification-unread-count>3 unread notifications</span>
+                                    <span class="col-6 text-right mark-as-read" data-mark-as-read>Mark all as
+                                        read</span>
+                                </div>
+                                <div class="col-12 px-0 dropdown-body scroller" data-notification-DOM>
+                                    <span class="spinner-border spinner-border-sm mx-0" style=" float: center;"
+                                        role="status">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="dropdown mt-2 mx-3 track-login-user" id="adminNotify">
+                            <i class="fa fas fa-envelope mr-3 mt-2 dropdown-icon" id="messagesDropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                            <span class="badge">1</span>
+                            <div class="dropdown-menu action-dropdown border" aria-labelledby="dropdownMenuButton">
+                                <div class="col-12 px-0 dropdown-top row mx-0 mb-4">
+                                    <span class="col-6">5 messages</span>
+                                    <span class="col-6 text-right mark-as-read">Mark all as read</span>
+                                </div>
+                                <div class="col-12 px-0 dropdown-body scroller">
+                                    <div class="col-12 indiv-info row mx-0">
+                                        <div class="info-actual-con col-10" data-toggle="modal"
+                                            data-target="#viewMessageModal">
+                                            <p class="info-words mb-0 mt-2">New broadcast message</p>
+                                            <span class="info-time">12 min ago</span>
+                                        </div>
+                                        <div class="col-2 px-2 info-img-con">
+                                            <div class="info-img border mt-1">
+                                                <i class="fa fas fa-check ml-1"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <li class="nav-item dropdown track-login-user" data-user-drop-box>
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <div class="nav-user row mx-0">
+                                    <div class="col-10 col-md-8 px-0 pl-2 data-user-name"
+                                        style="text-align: right !important;">
+                                        <span class="" data-user-name id="nav-name">loading...</span>
+                                    </div>
+                                    <div class="col-2 col-md-4 px-0">
+                                        <div class="nav-image mr-auto mx-3 border">
+                                            <img class="" data-user-image src="../../images/noimage.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="reviewer.html">Dashboard</a>
+                                <a class="dropdown-item" href="../user/profile-settings.html">Settings</a>
+                                <a class="dropdown-item" href="#">Help</a>
+                                <a class="dropdown-item" style="cursor:pointer;" data-logout>Log Out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="re-welcome-bg col-12">
+                <div class="col-12 col-md-8 mx-auto pt-5 welcome-words text-left">
+                    <h2 class="bold text-center">Track and report on ongoing projects in your community</h2>
+                    <p class="lead text-center">View and Participate in Tracking Niger Delta Development Projects</p>
+                </div>
+            </div>
+
+            <div class="search-pagination col-12 border row mx-0">
+                <h5 class="category-name mt-4 ml-5">Category: <span id="categ-name"></span></h5>
+                <div class="rev-pagination-dom col-12 col-md-3 mx-auto text-center">
+                    <nav class="mt-3 reviewer-paginate-rapper" aria-label="Page navigation example">
+                        <ul class="pagination re-page-list">
+
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-12 col-md-1 my-2 border view-select px-0 row mx-0">
+                    <div class="col text-center border-right" onclick="displayDOM(reviewPagaData)">
+                        <i class="fa fas fa-list mt-3"></i>
+                    </div>
+                    <div class="col text-center" onclick="displayGridDOM(reviewPagaData)">
+                        <i class="fa fas fa-border-all mt-3"></i>
+                    </div>
+                    <div class="col text-center border-left d-block d-lg-none" id="filter-btn" data-toggle="collapse"
+                        data-target="#collapse-filters">
+                        <i class="fas fa-filter mt-3 font-12px"> Filters</i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 row mx-0 pb-5">
+                <div class="col-12 col-md-9 mt-4 mb-4 px-0 px-lg-4 projects-section order-2 order-md-1 scroller"
+                    data-project-dom>
+                    <!-- <div class="col-1 spinner-con text-center" style="top: 20%;">
+                        <div class="spinner-border text-success mt-3" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div> -->
+                    <!-- <div class="col-12 projects-listed">
+                        <div class="col-12 mb-3 project row mx-0 p-4">
+                            <div class="col-12 col-md-5 px-0 project-image">
+                                <img src="../../images/welcome-bg.png" alt="">
+                            </div>
+                            <div class="col-12 col-md-7 project-details">
+                                <h2 class="grey col-12">Project Name</h2>
+                                <div class="col-12 contractor-name">
+                                    <h6 class="grey">${contractor ? contractor : 'Not Specified'}</h6>
+                                </div>
+                                <div class="col-12 activity-status">
+                                    <span class="grey">Activity Status</span>
+                                    <span class="status-designed p-1 br-10px">${STATUS}</span>
+                                </div>
+                                <div class="col-12 full-desc mt-2">
+                                    <p class="grey scroller">${PROJECT_DESCRIPTION}!</p>
+                                </div>
+                                <div class="col-12 project-stats row mx-0">
+                                    <div class="col-12 col-md-6 px-0">
+                                        <p class="grey mb-1">Project ID: <span class="stat-value">Nddc/${id}</span></p>
+                                    </div>
+                                    <div class="col-12 col-md-6 px-0">
+                                        <p class="grey mb-1">Total Budget: <span class="stat-value">N${BUDGET_COST}</span></p>
+                                    </div>
+                                    <div class="col-12 col-md-6 px-0">
+                                        <p class="grey mb-1">Start Date: <span class="stat-value">${created_at}</span></p>
+                                    </div>
+                                    <div class="col-12 col-md-6 px-0">
+                                        <p class="grey mb-1">Location/LGA: <span class="stat-value">${LOCATION}/${LGA}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  -->
+                </div>
+                <div class="col-12 col-md-3 filter-reviewer text-14px text-secondary order-1 order-md-2 mt-4">
+                    <div class="col-12">
+                        <div
+                            class="re-proj-search d-flex justify-content-lg-start justify-content-center p-0 m-0 border border-highlight rounded">
+                            <input class="form-control font-12px col-12 border-0 reviewed-side-search" type="search"
+                                placeholder="Search Reviewed Project . . .">
+                            <!-- <button type="submit" class="btn re-search-btn text-white rounded-0 form-control col-lg-4 col-4">Filter</button> -->
+                        </div>
+                    </div>
+                    <div class="now-showing col-12 mt-3 pb-2 border-bottom">
+                        <span class="grey font-12px">Now showing projects <span id="pageStats"></span></span>
+                    </div>
+                    <div class="collapse" id="collapse-filters">
+                        <div class="status-filter col-12 mt-3 border-bottom px-0">
+                            <p class="text-white font-14px px-3 py-1" style="background: #0b273d;">Status</p>
+                            <div class="pl-4">
+                                <div class="form-check my-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Not-Started">
+                                    <label class="form-check-label">
+                                        Not Started (<span class="filter-not-started"></span>)
+                                    </label>
+                                </div>
+                                <div class="form-check my-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="In-Progress">
+                                    <label class="form-check-label">
+                                        In Progress (<span class="filter-inprogress"></span>)
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Completed">
+                                    <label class="form-check-label">
+                                        Completed (<span class="filter-completed"></span>)
+                                    </label>
+                                </div>
+                                <div class="form-check my-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Due-To-Start">
+                                    <label class="form-check-label">
+                                        Due To Start (<span class="filter-due-to-start"></span>)
+                                    </label>
+                                </div>
+                                <div class="form-check my-2">
+                                    <input class="form-check-input client-search" type="checkbox" value="Abandoned">
+                                    <label class="form-check-label text-danger">
+                                        Abandoned (<span class="filter-abandoned"></span>)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="state-filter col-12 mt-3 border-bottom px-0">
+                            <p class="text-white font-14px px-3 py-1" style="background: #0b273d;">State</p>
+                            <div class="pl-4">
+                                <div class="form-check my-2">
+                                    <input class="form-check-input client-search" type="checkbox" value="Abia">
+                                    <label class="form-check-label">
+                                        Abia (<span class="filter-abia"></span>)
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Akwa Ibom">
+                                    <label class="form-check-label">
+                                        Akwa Ibom (<span class="filter-akwa-ibom"></span>)
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Bayelsa">
+                                    <label class="form-check-label">
+                                        Bayelsa (<span class="filter-bayelsa"></span>)
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Cross River">
+                                    <label class="form-check-label">
+                                        Cross River (<span class="filter-cross-rivers"></span>)
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Delta">
+                                    <label class="form-check-label">
+                                        Delta (<span class="filter-delta"></span>)
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Edo">
+                                    <label class="form-check-label">
+                                        Edo (<span class="filter-edo"></span>)
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Imo">
+                                    <label class="form-check-label">
+                                        Imo (<span class="filter-imo"></span>)
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input client-search" type="checkbox" value="Ondo">
+                                    <label class="form-check-label">
+                                        Ondo (<span class="filter-ondo"></span>)
+                                    </label>
+                                </div>
+                                <div class="form-check my-2">
+                                    <input class="form-check-input client-search" type="checkbox" value="Rivers">
+                                    <label class="form-check-label">
+                                        Rivers (<span class="filter-rivers"></span>)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="col-12">
+                <div class="col-12 mx-auto footer-con px-0 row mx-0">
+                    <div class="col-12 col-md px-0 links-contact row mx-0">
+                        <div class="col-12 col-md-4 mt-5 tracker-copyright text-center">
+                            <span style="cursor: pointer;" class="mt-2 bold"
+                                onclick="location.href=window.origin">DevelopND</span>
+                            <p>&copy;DevelopND 2020</p>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 site-links px-0">
+                            <ul class="list-group">
+                                <!-- onclick="location.href='about.html'" -->
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../../about.html">About Us</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../../project/search-results.html">Projects</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../../contact.html">Contact</a>
+                                </li>
+                                <!-- <li class="list-group-item py-1 px-1">
+                                    <a href="../../testimonial.html">Testimonial</a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="../../terms-condition.html">Terms and Conditions</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 contact-details px-0">
+                            <ul class="list-group">
+                                <li class="list-group-item py-1 px-1">
+                                    <a href="https://www.stakeholderdemocracy.org/">
+                                        SDN Nigeria Secretariat,
+                                        13 Location Road, Off Tombia Extension,
+                                        Oroazi, G.R.A. Phase 3,
+                                        Port Harcourt
+                                    </a>
+                                </li>
+                                <li class="list-group-item py-1 px-1">+234 (0) 703 1593 783</li>
+                                <li class="list-group-item py-1 px-1">info@stakeholderdemocracy.org</li>
+                                <li class="list-group-item py-1 px-1">info@developnd.ng</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md px-0 subscribe-social row mx-0">
+                        <div class="col-12 col-md-6 footer-subscribe mt-5">
+                            <span class="">Subscribe to our newsletter</span>
+                            <div class="special-input px-1 col-12 col-md-12 mx-auto row mx-0"
+                                style="border-radius: 2px;">
+                                <input id="email-sub-2" type="email" class="form-control col-12 col-md-9 my-1"
+                                    placeholder="Enter Email" required>
+                                <button id="subscribe-btn-2" class="btn btn-brand col-12 col-md-3 my-1 px-0"
+                                    style="border-radius: 2px;">Subscribe</button>
+                            </div>
+                        </div>
+                        <div class="footer-social col-12 col-md-6 mt-5 mb-3 row mx-0">
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="link-con mx-auto">
+                                    <a href="https://twitter.com/SDNNigerDelta" target="_blank">
+                                        <img class="mt-1" src="../../images/twitter-brand.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="link-con mx-auto">
+                                    <a href="https://facebook.com/SDNNigerDelta/" target="_blank">
+                                        <img class="mt-1" src="../../images/facebook-brand.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col col-md px-0 social-links mt-4">
+                                <div class="sdn-link-con mx-auto">
+                                    <a href="https://www.stakeholderdemocracy.org/" target="_blank">
+                                        <img class="" src="../../images/sdn-logo.jfif" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header alert-secondary">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="all-reviews-modal p-0 m-0">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger d-none" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- newsletter status modal -->
+    <div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border:0px; padding: 0rem 1rem;">
+                    <button type="button" data-close class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="response">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="../../js/general/third_party_cdn.js"></script>
+<script src="../../js/general/placeholder.js"> </script>
+<script src="../../js/general/routes.js"></script>
+<script src="../../js/manipulation/userData.js"></script>
+<script src="../../js/general/onSession.js"></script>
+<script src="../../js/general/global.js"></script>
+<script src="../../js/manipulation/reviewed-projects.js"></script>
+<script src="../../js/manipulation/eachProjectReviews.js"></script>
+<script src="../../js/apis/searchReviewedProjects.js"></script>
+<script src="../../js/apis/newsletter.js"></script>
+
+</html>

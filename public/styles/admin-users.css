@@ -1,0 +1,55 @@
+.view-user-con {
+  background: white;
+  min-height: 100vh;
+  display: none;
+}
+
+.view-user-con .user-image {
+  height: 7vh;
+  width: 7vh;
+  border-radius: 50%;
+}
+
+.view-user-con .user-image img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.view-user-con .user-name-location span {
+  font-size: 10px;
+}
+
+#createTaskCon input {
+  font-size: 12px;
+}
+
+#createTaskCon input::-webkit-input-placeholder {
+  font-size: 12px;
+}
+
+#createTaskCon input:-ms-input-placeholder {
+  font-size: 12px;
+}
+
+#createTaskCon input::-ms-input-placeholder {
+  font-size: 12px;
+}
+
+#createTaskCon input::placeholder {
+  font-size: 12px;
+}
+
+#createTaskCon button {
+  font-size: 12px;
+}
+
+#viewTaskCon {
+  max-height: 30vh;
+}
+
+#viewTaskCon #task-list li {
+  font-size: 12px;
+  padding: 10px;
+}
+/*# sourceMappingURL=admin-users.css.map */

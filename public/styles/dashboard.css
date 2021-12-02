@@ -1,0 +1,20 @@
+.shared-saved-listed {
+  min-height: 80vh;
+}
+
+.shared-saved-listed .nav-item .nav-link {
+  background-color: inherit;
+  color: #0b273d;
+  border-radius: 0px;
+  font-weight: 100;
+}
+
+.shared-saved-listed .nav-item .nav-link.active {
+  font-weight: bold;
+  border-bottom: 3px solid #0b273d;
+}
+
+.shared-saved-listed .projects-listed {
+  max-height: 300vh;
+}
+/*# sourceMappingURL=dashboard.css.map */

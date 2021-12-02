@@ -1,0 +1,99 @@
+@mixin connect-logo {
+    height: 39.78px;
+    width: 39.78px;
+    border-radius: 50%;
+}
+@import "media-queries";
+
+.auth-full {
+    min-height: 530.4px;
+
+    .auth-con {
+        min-height: 364.65px;
+        border: 1px solid lightgray;
+        border-top: 3px solid #0B273D;
+
+        .connect-btn {
+            min-height: 49.725px;
+            border-radius: 5px;
+            cursor: pointer;
+
+            .fb-logo {
+                @include connect-logo;
+                background: #3b5998;
+
+                img {
+                    height: 60%;
+                    width: 100%;
+                }
+            }
+            .google-logo {
+                @include connect-logo;
+                img {
+                    height: 60%;
+                    width: 100%;
+                }
+            }
+            span {
+                font-size: 15px;
+                @include small-screens {
+                    font-size: 12px;
+                  }
+            }
+        }
+        .continue-email {
+            font-size: 12px;
+            text-decoration: underline;
+            cursor: pointer;
+            &:hover {
+                color: black;
+            }
+        }
+        form {
+            label {
+                font-size: 12px;
+            }
+            input {
+                font-size: 12px;
+                &::placeholder {
+                    font-size: 12px;
+                }
+            }
+            button {
+                font-size: 12px;
+            }
+        }
+        .confirm-form {
+            font-size: 12px;
+            span {
+                font-weight: 100;
+            }
+            a {
+                font-weight: 100;
+                text-decoration: underline;
+            }
+        }
+        .request-status {
+            font-size: 12px;
+        }
+        .forgot-password-link {
+            font-size: 12px;
+            &:hover {
+                color: #0B273D;
+            }
+        }
+    }
+}
+.error-fields {
+    color: red;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+.verify {
+    color: grey;
+    &:hover {
+        color: #0B273D;
+    }
+}
